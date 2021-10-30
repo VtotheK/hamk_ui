@@ -24,5 +24,10 @@ namespace Laskin
         {
             InitializeComponent();
         }
+
+        private void CalculatorInput(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(sender.ToString());
+        }
     }
 }
