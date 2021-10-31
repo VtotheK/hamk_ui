@@ -1,0 +1,28 @@
+﻿<Window x:Class="Notepad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" Click="CreateNewFile"></MenuItem> 
+                    <MenuItem Header="_Open"></MenuItem> 
+                    <MenuItem Header="_Save"></MenuItem>
+                    <MenuItem Header="_Print"></MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header="_Exit"></MenuItem> 
+                </MenuItem>  
+                <MenuItem Header="_Format">
+                    <MenuItem Header="_Font"></MenuItem>
+                </MenuItem>  
+            </Menu>
+            <TextBox x:Name="Notepad_text">
+            </TextBox>
+        </DockPanel>
+    </Grid>
+</Window>
