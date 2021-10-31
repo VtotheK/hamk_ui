@@ -21,8 +21,9 @@
                     <MenuItem Header="_Font"></MenuItem>
                 </MenuItem>  
             </Menu>
-            <TextBox Text="{Binding Doc.FilePath}" x:Name="Notepad_text">
-            </TextBox>
         </DockPanel>
+            <TextBox Text="{Binding FileMenu.Doc.FilePath}" x:Name="Notepad_text">
+            </TextBox>
+            <Button Height="30" Width="100"  Content="Commands Work" Command="{Binding FileMenu.SaveFile}"></Button>
     </Grid>
 </Window>

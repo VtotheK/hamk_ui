@@ -8,32 +8,36 @@ using System.ComponentModel;
 
 namespace Notepad.Model
 {
-    class Document : INotifyPropertyChanged
+    class Document : ObservableObject 
     {
-        private string filePath;
-        private bool edited;
+        private string _filePath;
+        private bool _edited;
+        private string _content;
+
         public string FilePath
         {
-            get { return filePath; }
+            get { return _filePath; }
             set
             {
-                filePath = value;
-                OnPropertyChanged(nameof(FilePath));
+                _filePath = value;
+                OnPropertyChanged(ref _filePath, value);
             }
         }
         public bool Edited 
         {
-            get { return edited; }
+            get { return _edited; }
             set
             {
-                edited = value;
-                OnPropertyChanged(nameof(Edited));
+                OnPropertyChanged(ref _edited, value);
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
+        public string Content {
+            get { return _content; }
+            set
+            {
+                OnPropertyChanged(ref _content, value);
+            }
         }
     }
 }

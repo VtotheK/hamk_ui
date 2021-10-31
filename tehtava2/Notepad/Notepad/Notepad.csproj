@@ -64,6 +64,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\Document.cs" />
+    <Compile Include="ObservableObject.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="ViewModel\FileMenuViewModel.cs" />
     <Compile Include="ViewModel\NotepadViewModel.cs" />
     <Compile Include="View\Notepad.xaml.cs">
       <DependentUpon>Notepad.xaml</DependentUpon>

@@ -10,27 +10,10 @@ namespace Notepad.ViewModel
 {
     class NotepadViewModel
     {
-        private Document _doc = new Document();
+        private FileMenuViewModel _fileMenu = new FileMenuViewModel();
         public NotepadViewModel()
         {
-            Doc.FilePath = "Testtext";
         }
-
-        public Document Doc { get => _doc ; set => _doc = value; }
-
-        public void SaveFile(string content)
-        {
-            if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
-            {
-                try
-                {
-                    System.IO.File.WriteAllText(Doc.FilePath, content);
-                }
-                catch (UnauthorizedAccessException uae)
-                {
-                    throw;
-                }
-            }
-        }
+        public FileMenuViewModel FileMenu { get => _fileMenu; set => _fileMenu = value; }
     }
 }
