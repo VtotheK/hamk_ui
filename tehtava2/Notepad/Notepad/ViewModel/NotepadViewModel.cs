@@ -10,19 +10,21 @@ namespace Notepad.ViewModel
 {
     class NotepadViewModel
     {
-        private NotepadTextFile notepadTextFile;
+        private Document _doc = new Document();
         public NotepadViewModel()
         {
-
+            Doc.FilePath = "Testtext";
         }
+
+        public Document Doc { get => _doc ; set => _doc = value; }
 
         public void SaveFile(string content)
         {
-            if (notepadTextFile.FilePath != null && !String.IsNullOrWhiteSpace(notepadTextFile.FilePath))
+            if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
             {
                 try
                 {
-                    File.WriteAllText(notepadTextFile.FilePath, content);
+                    System.IO.File.WriteAllText(Doc.FilePath, content);
                 }
                 catch (UnauthorizedAccessException uae)
                 {

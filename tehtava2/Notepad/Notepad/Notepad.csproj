@@ -63,6 +63,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Model\Document.cs" />
+    <Compile Include="ViewModel\NotepadViewModel.cs" />
     <Compile Include="View\Notepad.xaml.cs">
       <DependentUpon>Notepad.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -94,9 +96,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

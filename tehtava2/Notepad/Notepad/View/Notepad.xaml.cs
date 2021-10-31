@@ -25,24 +25,14 @@ namespace Notepad
         public MainWindow()
         {
             vm = new NotepadViewModel();
+            DataContext = vm;
             InitializeComponent();
         }
 
         private void CreateNewFile(object sender, RoutedEventArgs e)
         {
-            if (filePath == null)
-            {
-                Notepad_text.Text = "";
-            }
-            else
-            {
-                if (MessageBox.Show("Are you sure you want to open a new file? All unsaved work will be erased.", "Message",
-                    MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    filePath = "";
-                    Notepad_text.Text = "";
-                }
-            }
+//if (MessageBox.Show("Are you sure you want to open a new file? All unsaved work will be erased.", "Message",
+  //          MessageBoxButton.YesNo) == MessageBoxResult.Yes)
         }
     }
 }

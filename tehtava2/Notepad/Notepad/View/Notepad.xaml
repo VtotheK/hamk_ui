@@ -21,7 +21,7 @@
                     <MenuItem Header="_Font"></MenuItem>
                 </MenuItem>  
             </Menu>
-            <TextBox x:Name="Notepad_text">
+            <TextBox Text="{Binding Doc.FilePath}" x:Name="Notepad_text">
             </TextBox>
         </DockPanel>
     </Grid>

@@ -8,9 +8,8 @@ using System.ComponentModel;
 
 namespace Notepad.Model
 {
-    class NotepadTextFile : INotifyPropertyChanged
+    class Document : INotifyPropertyChanged
     {
-
         private string filePath;
         private bool edited;
         public string FilePath
