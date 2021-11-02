@@ -27,6 +27,7 @@ namespace Notepad.ViewModel
 
         public string NotepadTextFieldContentGet()
         {
+            Console.WriteLine(MainWindow.Notepad_textbox.Text);
             return MainWindow.Notepad_textbox.Text;
         }
     }

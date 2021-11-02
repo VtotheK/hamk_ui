@@ -11,10 +11,9 @@ namespace Notepad.Model
 {
     class Document : ObservableObject 
     {
-        private string _filePath;
-        private bool _edited;
-        private string _content;
-        private string _fileName;
+        private string _filePath = null;
+        private string _content = "";
+        private string _fileName = null;
 
         public string FilePath
         {
@@ -23,14 +22,6 @@ namespace Notepad.Model
             {
                 _filePath = value;
                 OnPropertyChanged(ref _filePath, value);
-            }
-        }
-        public bool Edited 
-        {
-            get { return _edited; }
-            set
-            {
-                OnPropertyChanged(ref _edited, value);
             }
         }
 
