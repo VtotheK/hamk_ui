@@ -38,7 +38,7 @@ namespace Notepad.ViewModel
             OpenFile = new RelayCommand(cOpenFile);
             CloseNotepad = new RelayCommand(cCloseNotepad);
             PrintFile = new RelayCommand(cPrintFile);
-            PrintFile = new RelayCommand(cSaveFileAs);
+            SaveFileAs = new RelayCommand(cSaveFileAs);
         }
         public Document Doc { get => _doc; set => _doc = value; }
         public RelayCommand SaveFile { get => _saveFile; set => _saveFile = value; }

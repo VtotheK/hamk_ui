@@ -11,16 +11,23 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" Command="{Binding FileMenu.NewFile}"></MenuItem> 
-                    <MenuItem Header="_Open" Command="{Binding FileMenu.OpenFile}"></MenuItem> 
+                    <MenuItem Header="_New" Command="{Binding FileMenu.NewFile}"></MenuItem>
+                    <MenuItem Header="_Open" Command="{Binding FileMenu.OpenFile}"></MenuItem>
                     <MenuItem Header="_Save" Command="{Binding FileMenu.SaveFile}"></MenuItem>
+                    <MenuItem Header="_Save as" Command="{Binding FileMenu.SaveFileAs}"></MenuItem>
                     <MenuItem Header="_Print" Command="{Binding FileMenu.PrintFile}"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="_Exit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem> 
-                </MenuItem>  
+                    <MenuItem Header="_Exit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Copy">
+                    </MenuItem>
+                    <MenuItem Header="_Paste">
+                    </MenuItem>
+                </MenuItem>
                 <MenuItem Header="_Format">
                     <MenuItem Header="_Font"></MenuItem>
-                </MenuItem>  
+                </MenuItem>
             </Menu>
             <TextBox TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
             </TextBox>
