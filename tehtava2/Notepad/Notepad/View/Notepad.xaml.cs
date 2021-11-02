@@ -24,9 +24,9 @@ namespace Notepad
         NotepadViewModel vm;
         public MainWindow()
         {
+            InitializeComponent();
             vm = new NotepadViewModel(this);
             DataContext = vm;
-            InitializeComponent();
         }
     }
 }

@@ -20,9 +20,9 @@
                     <MenuItem Header="_Exit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Edit">
-                    <MenuItem Header="_Copy">
+                    <MenuItem Header="_Copy" Command="{Binding EditMenu.Copy}">
                     </MenuItem>
-                    <MenuItem Header="_Paste">
+                    <MenuItem Header="_Paste" Command="{Binding EditMenu.Paste}">
                     </MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Format">
