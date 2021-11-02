@@ -22,7 +22,7 @@
                     <MenuItem Header="_Font"></MenuItem>
                 </MenuItem>  
             </Menu>
-            <TextBox VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
+            <TextBox TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
             </TextBox>
         </DockPanel>
     </Grid>
