@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,13 +41,13 @@ namespace Notepad.Model
                 OnPropertyChanged(ref _content, value);
             }
         }
-        public string FileName {
+        public string FileName
+        {
             get { return _fileName; }
             set
             {
                 OnPropertyChanged(ref _fileName, value);
             }
         }
-
     }
 }

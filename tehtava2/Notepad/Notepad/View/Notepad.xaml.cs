@@ -24,15 +24,9 @@ namespace Notepad
         NotepadViewModel vm;
         public MainWindow()
         {
-            vm = new NotepadViewModel();
+            vm = new NotepadViewModel(this);
             DataContext = vm;
             InitializeComponent();
-        }
-
-        private void CreateNewFile(object sender, RoutedEventArgs e)
-        {
-//if (MessageBox.Show("Are you sure you want to open a new file? All unsaved work will be erased.", "Message",
-  //          MessageBoxButton.YesNo) == MessageBoxResult.Yes)
         }
     }
 }

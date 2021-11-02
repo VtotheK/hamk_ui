@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Notepad.Model;
+using Notepad;
+using System.Windows;
 
 namespace Notepad.ViewModel
 {
@@ -15,31 +17,38 @@ namespace Notepad.ViewModel
         private Document _doc = new Document();
         private RelayCommand _saveFile;
         private RelayCommand _openFile;
-
+        private RelayCommand _newFile;
+        private RelayCommand _printFile;
+        private RelayCommand _closeNotepad;
+        private NotepadViewModel _notepadViewModel;
         public FileMenuViewModel() {
-            SaveFile = new RelayCommand(cSaveFile);
-            OpenFile = new RelayCommand(cOpenFile);
-            Doc.FilePath = "YEAHHAHWE";
+            CreateCommand();
         }
-
+        public FileMenuViewModel(NotepadViewModel nv){
+            _notepadViewModel = nv;
+            CreateCommand();
+        }
+        private void CreateCommand()
+        {
+            SaveFile = new RelayCommand(cSaveFile);
+            NewFile = new RelayCommand(cNewFile);
+            OpenFile = new RelayCommand(cOpenFile);
+            CloseNotepad = new RelayCommand(cCloseNotepad);
+            PrintFile = new RelayCommand(cPrintFile);
+        }
         public Document Doc { get => _doc; set => _doc = value; }
         public RelayCommand SaveFile { get => _saveFile; set => _saveFile = value; }
+        public RelayCommand NewFile { get => _newFile; set => _newFile = value; }
+        public RelayCommand PrintFile { get => _printFile; set => _printFile = value; }
+        public RelayCommand CloseNotepad { get => _closeNotepad; set => _closeNotepad = value; }
         public RelayCommand OpenFile { get => _openFile; set => _openFile = value; }
+        private NotepadViewModel NotepadViewModel { get => _notepadViewModel;}
+
         public void cSaveFile()
         {
-            Doc.FilePath = "YSAYDASYD";
             if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
             {
-                /*
-                try
-                {
-                    System.IO.File.WriteAllText(Doc.FilePath, Doc.Content);
-                }
-                catch (UnauthorizedAccessException uae)
-                {
-                    throw;
-                }
-                */
+                File.WriteAllText(Doc.FilePath, NotepadViewModel.NotepadTextFieldContentGet());
             }
         }
         public void cOpenFile()
@@ -51,6 +60,41 @@ namespace Notepad.ViewModel
             {
                 Doc.FilePath = diag.FileName;
                 Doc.FileName = Path.GetFileName(diag.FileName);
+                PopulateTextBox(Doc);
+            }
+        }
+
+        public void cNewFile()
+        {
+            if (Doc.Edited)
+            {
+                if (System.Windows.MessageBox.Show("Are you sure you want to open a new file? All unsaved work will be lost.", "Message",
+                MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    return;
+                }
+
+            }
+            Doc.FilePath = String.Empty;
+            Doc.FileName = String.Empty;
+            Doc.Content = String.Empty;
+            Doc.Edited = false;      
+        }
+        
+        private void cCloseNotepad()
+        {
+            throw new NotImplementedException();
+        }
+        private void cPrintFile()
+        {
+            throw new NotImplementedException();
+        }
+        
+        private void PopulateTextBox(Document doc)
+        {
+            if (doc.FilePath != null && !string.IsNullOrWhiteSpace(doc.FilePath))
+            {
+                doc.Content = File.ReadAllText(doc.FilePath);
             }
         }
     }
