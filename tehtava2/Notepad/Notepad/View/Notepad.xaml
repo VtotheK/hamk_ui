@@ -5,25 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad"
         mc:Ignorable="d"
-        Title="Notepad" Height="450" Width="800">
+        Title="{Binding Doc.FileName, StringFormat= '\{0\} - Notepad'}" 
+        Height="450" Width="800">
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
                     <MenuItem Header="_New" Click="CreateNewFile"></MenuItem> 
-                    <MenuItem Header="_Open"></MenuItem> 
+                    <MenuItem Header="_Open" Command="{Binding FileMenu.OpenFile}"></MenuItem> 
                     <MenuItem Header="_Save"></MenuItem>
                     <MenuItem Header="_Print"></MenuItem>
-                    <Separator></Separator>
+                    <Separator/>
                     <MenuItem Header="_Exit"></MenuItem> 
                 </MenuItem>  
                 <MenuItem Header="_Format">
                     <MenuItem Header="_Font"></MenuItem>
                 </MenuItem>  
             </Menu>
-        </DockPanel>
-            <TextBox Text="{Binding FileMenu.Doc.FilePath}" x:Name="Notepad_text">
+            <TextBox x:Name="Notepad_text">
             </TextBox>
-            <Button Height="30" Width="100"  Content="Commands Work" Command="{Binding FileMenu.SaveFile}"></Button>
+        </DockPanel>
     </Grid>
 </Window>

@@ -13,6 +13,7 @@ namespace Notepad.Model
         private string _filePath;
         private bool _edited;
         private string _content;
+        private string _fileName;
 
         public string FilePath
         {
@@ -39,5 +40,13 @@ namespace Notepad.Model
                 OnPropertyChanged(ref _content, value);
             }
         }
+        public string FileName {
+            get { return _fileName; }
+            set
+            {
+                OnPropertyChanged(ref _fileName, value);
+            }
+        }
+
     }
 }
