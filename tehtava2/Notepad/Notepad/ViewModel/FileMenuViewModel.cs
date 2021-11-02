@@ -1,9 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Win32;
+using System.Windows.Forms;
 using Notepad.Model;
 
 namespace Notepad.ViewModel
@@ -46,7 +47,11 @@ namespace Notepad.ViewModel
             OpenFileDialog diag = new OpenFileDialog();
             diag.DefaultExt = ".txt";
             diag.Filter = "Text files (.txt)|*.txt|All files (*.*)|*.*";
-            diag.ShowDialog();
+            if(diag.ShowDialog() == DialogResult.OK)
+            {
+                Doc.FilePath = diag.FileName;
+                Doc.FileName = Path.GetFileName(diag.FileName);
+            }
         }
     }
 }
