@@ -100,7 +100,6 @@ namespace Notepad.ViewModel
                 {
                     return;
                 }
-
             }
             Doc.FilePath = String.Empty;
             Doc.FileName = String.Empty;
@@ -109,7 +108,19 @@ namespace Notepad.ViewModel
 
         private void cCloseNotepad()
         {
-            throw new NotImplementedException();
+            if(IsDocumentEdited())
+            {
+                if (System.Windows.MessageBox.Show("Are you sure you want to exit? All unsaved work will be discarded.", "Message",
+                MessageBoxButton.YesNo) == MessageBoxResult.No)
+                {
+                    return;
+                }
+                else
+                {
+                    Environment.Exit(0);
+                }
+
+            }
         }
         private void cPrintFile()
         {
@@ -126,7 +137,6 @@ namespace Notepad.ViewModel
 
         private bool IsDocumentEdited()
         {
-            Console.WriteLine(NotepadViewModel.NotepadTextFieldContentGet() != Doc.Content);
             return NotepadViewModel.NotepadTextFieldContentGet() != Doc.Content; 
         }
         private bool IsDocumentOpen()

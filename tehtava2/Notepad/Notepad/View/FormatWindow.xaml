@@ -1,0 +1,43 @@
+﻿<Window x:Class="Notepad.View.FormatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad.View"
+        mc:Ignorable="d"
+        Title="FormatWindow" Height="250" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"></ColumnDefinition> 
+            <ColumnDefinition Width="4*"></ColumnDefinition> 
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Content="Font size"></Label>
+        <ListBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Top">
+            <ListBoxItem FontSize="8">8</ListBoxItem> 
+            <ListBoxItem FontSize="10">10</ListBoxItem> 
+            <ListBoxItem FontSize="12">12</ListBoxItem> 
+            <ListBoxItem FontSize="14">14</ListBoxItem> 
+            <ListBoxItem FontSize="16">16</ListBoxItem> 
+            <ListBoxItem FontSize="18">18</ListBoxItem> 
+            <ListBoxItem FontSize="20">20</ListBoxItem> 
+            <ListBoxItem FontSize="22">22</ListBoxItem> 
+            <ListBoxItem FontSize="24">24</ListBoxItem> 
+            <ListBoxItem FontSize="26">26</ListBoxItem> 
+            <ListBoxItem FontSize="28">28</ListBoxItem> 
+            <ListBoxItem FontSize="32">32</ListBoxItem> 
+            <ListBoxItem FontSize="48">48</ListBoxItem> 
+            <ListBoxItem FontSize="72">72</ListBoxItem> 
+        </ListBox>
+        <Label Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Content="Font color"></Label>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <RadioButton Margin="10" FontSize="14" IsChecked="True">Black</RadioButton> 
+            <RadioButton Margin="10" FontSize="14" Foreground="Red">Red</RadioButton> 
+            <RadioButton Margin="10" FontSize="14" Foreground="Green">Green</RadioButton>
+            <RadioButton Margin="10" FontSize="14" Foreground="Blue">Blue</RadioButton> 
+        </StackPanel>
+    </Grid>
+</Window>
