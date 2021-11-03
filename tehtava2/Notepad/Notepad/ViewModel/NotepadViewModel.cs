@@ -8,7 +8,7 @@ namespace Notepad.ViewModel
 
         private FileMenuViewModel _fileMenu;
         private EditViewModel _editMenu;
-        private FormatMenuViewModel _formatMenu = new FormatMenuViewModel();
+        private FormatViewModel _formatMenu = new FormatViewModel();
         private MainWindow _mainWindow;
         public NotepadViewModel(MainWindow mw)
         {
@@ -21,7 +21,7 @@ namespace Notepad.ViewModel
         {
         }
         public FileMenuViewModel FileMenu { get => _fileMenu; set => _fileMenu = value; }
-        public FormatMenuViewModel FormatMenu { get => _formatMenu; set => _formatMenu = value; }
+        public FormatViewModel FormatMenu { get => _formatMenu; set => _formatMenu = value; }
         private MainWindow MainWindow { get => _mainWindow;}
         public EditViewModel EditMenu { get => _editMenu; set => _editMenu = value; }
         public RelayCommand FormatMenuShow { get => _formatMenuShow; set => _formatMenuShow = value; }
