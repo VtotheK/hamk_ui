@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Notepad.View"
         mc:Ignorable="d"
-        Title="FormatWindow" Height="250" Width="300">
+        Title="FormatWindow" Height="300" Width="300"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"></ColumnDefinition> 
@@ -14,9 +15,10 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"></RowDefinition>
             <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Content="Font size"></Label>
-        <ListBox Grid.Row="1" Grid.Column="0" VerticalAlignment="Top">
+        <ListBox Grid.Row="1"  Grid.Column="0" VerticalAlignment="Top">
             <ListBoxItem FontSize="8">8</ListBoxItem> 
             <ListBoxItem FontSize="10">10</ListBoxItem> 
             <ListBoxItem FontSize="12">12</ListBoxItem> 
@@ -39,5 +41,7 @@
             <RadioButton Margin="10" FontSize="14" Foreground="Green">Green</RadioButton>
             <RadioButton Margin="10" FontSize="14" Foreground="Blue">Blue</RadioButton> 
         </StackPanel>
+        <Button Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="1">Cancel</Button>
+        <Button HorizontalAlignment="Right" Width="80" Margin="10 5 10 5" Command="{Binding SaveFormat}" Grid.Row="2" Grid.Column="0">Save</Button>
     </Grid>
 </Window>

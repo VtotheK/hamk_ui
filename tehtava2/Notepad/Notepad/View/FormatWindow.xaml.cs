@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,11 +21,10 @@ namespace Notepad.View
     public partial class FormatWindow : Window
     {
         FormatViewModel vm; 
-        public FormatWindow()
+        public FormatWindow(FormatViewModel viewModel)
         {
             InitializeComponent();
-            vm = new FormatViewModel();
-            DataContext = vm;
+            DataContext = viewModel;
         }
     }
 }

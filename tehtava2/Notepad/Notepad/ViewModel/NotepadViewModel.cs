@@ -33,7 +33,8 @@ namespace Notepad.ViewModel
 
         public void cFormatMenuShow()
         {
-            FormatWindow fw = new FormatWindow();
+            FormatWindow fw = new FormatWindow(FormatMenu);
+            fw.Show();
         }
     }
 }
