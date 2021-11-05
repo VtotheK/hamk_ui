@@ -18,30 +18,30 @@
             <RowDefinition Height="2*"></RowDefinition>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Content="Font size"></Label>
-        <ListBox Grid.Row="1"  Grid.Column="0" VerticalAlignment="Top">
-            <ListBoxItem FontSize="8">8</ListBoxItem> 
-            <ListBoxItem FontSize="10">10</ListBoxItem> 
-            <ListBoxItem FontSize="12">12</ListBoxItem> 
-            <ListBoxItem FontSize="14">14</ListBoxItem> 
-            <ListBoxItem FontSize="16">16</ListBoxItem> 
-            <ListBoxItem FontSize="18">18</ListBoxItem> 
-            <ListBoxItem FontSize="20">20</ListBoxItem> 
-            <ListBoxItem FontSize="22">22</ListBoxItem> 
-            <ListBoxItem FontSize="24">24</ListBoxItem> 
-            <ListBoxItem FontSize="26">26</ListBoxItem> 
-            <ListBoxItem FontSize="28">28</ListBoxItem> 
-            <ListBoxItem FontSize="32">32</ListBoxItem> 
-            <ListBoxItem FontSize="48">48</ListBoxItem> 
-            <ListBoxItem FontSize="72">72</ListBoxItem> 
+        <ListBox Grid.Row="1" SelectionChanged="FontSizeNonMVVM" x:Name="FontSizeListBox" Grid.Column="0" VerticalAlignment="Top">
+            <ListBoxItem Content="8"  FontSize="8"></ListBoxItem> 
+            <ListBoxItem Content="10" FontSize="10"></ListBoxItem> 
+            <ListBoxItem Content="12" FontSize="12"></ListBoxItem> 
+            <ListBoxItem Content="14" FontSize="14"></ListBoxItem> 
+            <ListBoxItem Content="16" FontSize="16"></ListBoxItem> 
+            <ListBoxItem Content="18" FontSize="18"></ListBoxItem> 
+            <ListBoxItem Content="20" FontSize="20"></ListBoxItem> 
+            <ListBoxItem Content="22" FontSize="22"></ListBoxItem> 
+            <ListBoxItem Content="24" FontSize="24"></ListBoxItem> 
+            <ListBoxItem Content="26" FontSize="26"></ListBoxItem> 
+            <ListBoxItem Content="28" FontSize="28"></ListBoxItem> 
+            <ListBoxItem Content="32" FontSize="32"></ListBoxItem> 
+            <ListBoxItem Content="48" FontSize="48"></ListBoxItem> 
+            <ListBoxItem Content="72" FontSize="72"></ListBoxItem> 
         </ListBox>
         <Label Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Content="Font color"></Label>
-        <StackPanel Grid.Row="1" Grid.Column="1">
-            <RadioButton Margin="10" FontSize="14" IsChecked="True">Black</RadioButton> 
-            <RadioButton Margin="10" FontSize="14" Foreground="Red">Red</RadioButton> 
-            <RadioButton Margin="10" FontSize="14" Foreground="Green">Green</RadioButton>
-            <RadioButton Margin="10" FontSize="14" Foreground="Blue">Blue</RadioButton> 
+        <StackPanel Grid.Row="1" x:Name="RadioPanel" Grid.Column="1">
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" FontSize="14">Black</RadioButton> 
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" FontSize="14" Foreground="Red">Red</RadioButton> 
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" FontSize="14" Foreground="Green">Green</RadioButton>
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" FontSize="14" Foreground="Blue">Blue</RadioButton> 
         </StackPanel>
         <Button Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="1">Cancel</Button>
-        <Button HorizontalAlignment="Right" Width="80" Margin="10 5 10 5" Command="{Binding SaveFormat}" Grid.Row="2" Grid.Column="0">Save</Button>
+        <Button HorizontalAlignment="Right" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="0">Save</Button>
     </Grid>
 </Window>

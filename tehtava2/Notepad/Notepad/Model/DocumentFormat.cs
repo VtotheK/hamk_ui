@@ -7,24 +7,26 @@ using System.Threading.Tasks;
 
 namespace Notepad.Model
 {
-    class DocumentFormat : ObservableObject
+    public class DocumentFormat : ObservableObject
     {
         private int _fontSize;
-        private Brush _fontColor;
+        private SolidColorBrush _fontColor;
 
         public int FontSize
         {
             get { return _fontSize; }
             set
             {
+                Console.WriteLine(value);
                 OnPropertyChanged(ref _fontSize, value);
             }
         }
-        public Brush FontColor  
+        public SolidColorBrush FontColor  
         {
             get { return _fontColor; }
             set
             {
+                Console.WriteLine(value);
                 OnPropertyChanged(ref _fontColor, value);
             }
         }
