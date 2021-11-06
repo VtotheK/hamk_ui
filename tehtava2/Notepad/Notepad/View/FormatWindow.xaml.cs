@@ -60,6 +60,11 @@ namespace Notepad.View
             }
             vm.DocForm.FontColor = brush;
         }
+
+        private void CloseWindow(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }
