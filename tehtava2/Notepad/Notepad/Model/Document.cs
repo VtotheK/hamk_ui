@@ -1,15 +1,6 @@
-﻿using System;
-using System.Reflection;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-
-namespace Notepad.Model
+﻿namespace Notepad.Model
 {
-    class Document : ObservableObject 
+    class Document : ObservableObject
     {
         private string _filePath = null;
         private string _content = "";
@@ -25,7 +16,8 @@ namespace Notepad.Model
             }
         }
 
-        public string Content {
+        public string Content
+        {
             get { return _content; }
             set
             {

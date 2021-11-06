@@ -1,5 +1,4 @@
-﻿using System;
-using Notepad.View;
+﻿using Notepad.View;
 namespace Notepad.ViewModel
 {
     class NotepadViewModel
@@ -22,7 +21,7 @@ namespace Notepad.ViewModel
         }
         public FileMenuViewModel FileMenu { get => _fileMenu; set => _fileMenu = value; }
         public FormatViewModel FormatMenu { get => _formatMenu; set => _formatMenu = value; }
-        private MainWindow MainWindow { get => _mainWindow;}
+        private MainWindow MainWindow { get => _mainWindow; }
         public EditViewModel EditMenu { get => _editMenu; set => _editMenu = value; }
         public RelayCommand FormatMenuShow { get => _formatMenuShow; set => _formatMenuShow = value; }
 

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Windows.Media;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Windows.Media;
 
 namespace Notepad.Model
 {
@@ -31,7 +26,7 @@ namespace Notepad.Model
                 OnPropertyChanged(ref _fontSize, value);
             }
         }
-        public SolidColorBrush FontColor  
+        public SolidColorBrush FontColor
         {
             get { return _fontColor; }
             set

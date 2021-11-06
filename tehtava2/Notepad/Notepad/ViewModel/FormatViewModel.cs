@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using Notepad.Model;
+﻿using Notepad.Model;
 
 
 namespace Notepad.ViewModel
@@ -24,7 +18,7 @@ namespace Notepad.ViewModel
             _applyChanges = new RelayCommand(cApplyChanges);
         }
 
-        public RelayCommand RevertChanges{ get => _revertChanges; set => _revertChanges = value; }
+        public RelayCommand RevertChanges { get => _revertChanges; set => _revertChanges = value; }
         public DocumentFormat DocForm { get => _docForm; set => _docForm = value; }
         public DocumentFormat DocFormCached { get => _docFormCached; set => _docFormCached = value; }
         public RelayCommand ApplyChanges { get => _applyChanges; set => _applyChanges = value; }

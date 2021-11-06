@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Notepad.Model;
+using System;
+using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
-using System.Windows.Forms;
-using Notepad.Model;
 using System.Windows;
-using System.Drawing;
+using System.Windows.Forms;
 
 namespace Notepad.ViewModel
 {
@@ -13,15 +13,15 @@ namespace Notepad.ViewModel
     {
         private Document _doc = new Document();
         private NotepadViewModel _notepadViewModel;
-        
+
         private RelayCommand _saveFile;
         private RelayCommand _openFile;
         private RelayCommand _newFile;
         private RelayCommand _printFile;
         private RelayCommand _closeNotepad;
         private RelayCommand _saveFileAs;
-    
-        
+
+
         public FileMenuViewModel()
         {
             CreateCommands();
@@ -55,18 +55,18 @@ namespace Notepad.ViewModel
             {
                 File.WriteAllText(Doc.FilePath, NotepadViewModel.NotepadTextFieldContentGet());
             }
-            else 
+            else
             {
                 cSaveFileAs();
             }
         }
-        
+
         public void cSaveFileAs()
         {
             var diag = new SaveFileDialog();
             diag.Filter = "Text files (.txt)|*.txt|All files (*.*)|*.*";
             diag.DefaultExt = ".txt";
-            if(diag.ShowDialog() == DialogResult.OK)
+            if (diag.ShowDialog() == DialogResult.OK)
             {
                 string path = diag.FileName;
                 Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
@@ -113,7 +113,7 @@ namespace Notepad.ViewModel
 
         private void cCloseNotepad()
         {
-            if(IsDocumentEdited())
+            if (IsDocumentEdited())
             {
                 if (System.Windows.MessageBox.Show("Are you sure you want to exit? All unsaved work will be discarded.", "Message",
                 MessageBoxButton.YesNo) == MessageBoxResult.No)
@@ -126,6 +126,10 @@ namespace Notepad.ViewModel
                 }
 
             }
+            else
+            {
+                Environment.Exit(0);
+            }
         }
         private void cPrintFile()
         {
@@ -135,14 +139,14 @@ namespace Notepad.ViewModel
             printdiag.Document = printDoc;
             printdiag.AllowSelection = true;
             printdiag.AllowSomePages = true;
-            
-            if(printdiag.ShowDialog() == DialogResult.OK)
+
+            if (printdiag.ShowDialog() == DialogResult.OK)
             {
                 printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
                 printDoc.Print();
             }
         }
-        
+
         private void PrintPage(object sender, PrintPageEventArgs ev)
         {
             ev.Graphics.DrawString(Doc.Content, new System.Drawing.Font("Arial", 1), Brushes.Black, ev.MarginBounds.Left, 0, new StringFormat());
@@ -157,11 +161,11 @@ namespace Notepad.ViewModel
 
         private bool IsDocumentEdited()
         {
-            return NotepadViewModel.NotepadTextFieldContentGet() != Doc.Content; 
+            return NotepadViewModel.NotepadTextFieldContentGet() != Doc.Content;
         }
         private bool IsDocumentOpen()
         {
-            return Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath); 
+            return Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath);
         }
     }
 }
