@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
 using Notepad.Model;
 using System.Windows;
+using System.Drawing;
 
 namespace Notepad.ViewModel
 {
@@ -10,13 +12,16 @@ namespace Notepad.ViewModel
     class FileMenuViewModel
     {
         private Document _doc = new Document();
+        private NotepadViewModel _notepadViewModel;
+        
         private RelayCommand _saveFile;
         private RelayCommand _openFile;
         private RelayCommand _newFile;
         private RelayCommand _printFile;
         private RelayCommand _closeNotepad;
         private RelayCommand _saveFileAs;
-        private NotepadViewModel _notepadViewModel;
+    
+        
         public FileMenuViewModel()
         {
             CreateCommands();
@@ -124,9 +129,24 @@ namespace Notepad.ViewModel
         }
         private void cPrintFile()
         {
-            throw new NotImplementedException();
+            PrintDialog printdiag = new PrintDialog();
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.DocumentName = Doc.FileName;
+            printdiag.Document = printDoc;
+            printdiag.AllowSelection = true;
+            printdiag.AllowSomePages = true;
+            
+            if(printdiag.ShowDialog() == DialogResult.OK)
+            {
+                printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
+                printDoc.Print();
+            }
         }
-
+        
+        private void PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            ev.Graphics.DrawString(Doc.Content, new System.Drawing.Font("Arial", 1), Brushes.Black, ev.MarginBounds.Left, 0, new StringFormat());
+        }
         private void PopulateTextBox(Document doc)
         {
             if (doc.FilePath != null && !String.IsNullOrWhiteSpace(doc.FilePath))
