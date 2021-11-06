@@ -12,6 +12,17 @@ namespace Notepad.Model
         private int _fontSize;
         private SolidColorBrush _fontColor;
 
+        public DocumentFormat(int fontSize, SolidColorBrush fontColor)
+        {
+            _fontSize = fontSize;
+            _fontColor = fontColor;
+        }
+        public DocumentFormat()
+        {
+            _fontSize = 12;
+            _fontColor = Brushes.Black;
+        }
+
         public int FontSize
         {
             get { return _fontSize; }

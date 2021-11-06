@@ -29,7 +29,7 @@
                     <MenuItem Command="{Binding FormatMenuShow}" Header="_Font"></MenuItem>
                 </MenuItem>
             </Menu>
-            <TextBox TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
+            <TextBox TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
             </TextBox>
         </DockPanel>
     </Grid>
