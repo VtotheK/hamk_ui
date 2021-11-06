@@ -28,7 +28,6 @@ namespace Notepad.Model
             get { return _fontSize; }
             set
             {
-                Console.WriteLine(value);
                 OnPropertyChanged(ref _fontSize, value);
             }
         }
@@ -37,7 +36,6 @@ namespace Notepad.Model
             get { return _fontColor; }
             set
             {
-                Console.WriteLine(value);
                 OnPropertyChanged(ref _fontColor, value);
             }
         }
