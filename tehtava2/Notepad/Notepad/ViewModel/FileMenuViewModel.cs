@@ -4,7 +4,8 @@ using System.Drawing;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows;
-using System.Windows.Forms;
+using System.Windows.Controls;
+using Microsoft.Win32;
 
 namespace Notepad.ViewModel
 {
@@ -66,7 +67,7 @@ namespace Notepad.ViewModel
             var diag = new SaveFileDialog();
             diag.Filter = "Text files (.txt)|*.txt|All files (*.*)|*.*";
             diag.DefaultExt = ".txt";
-            if (diag.ShowDialog() == DialogResult.OK)
+            if (diag.ShowDialog() == true)
             {
                 string path = diag.FileName;
                 Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
@@ -80,7 +81,7 @@ namespace Notepad.ViewModel
             OpenFileDialog diag = new OpenFileDialog();
             diag.DefaultExt = ".txt";
             diag.Filter = "Text files (.txt)|*.txt|All files (*.*)|*.*";
-            if (diag.ShowDialog() == DialogResult.OK)
+            if (diag.ShowDialog() == true)
             {
                 if (IsDocumentEdited())
                 {
@@ -136,11 +137,8 @@ namespace Notepad.ViewModel
             PrintDialog printdiag = new PrintDialog();
             PrintDocument printDoc = new PrintDocument();
             printDoc.DocumentName = Doc.FileName;
-            printdiag.Document = printDoc;
-            printdiag.AllowSelection = true;
-            printdiag.AllowSomePages = true;
 
-            if (printdiag.ShowDialog() == DialogResult.OK)
+            if (printdiag.ShowDialog() == true)
             {
                 printDoc.PrintPage += new PrintPageEventHandler(PrintPage);
                 printDoc.Print();
