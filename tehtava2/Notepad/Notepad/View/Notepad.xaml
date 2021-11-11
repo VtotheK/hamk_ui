@@ -10,6 +10,7 @@
     <Window.InputBindings>
         <KeyBinding Modifiers="Control" Key="N" Command="{Binding FileMenu.NewFile}"></KeyBinding>
         <KeyBinding Modifiers="Control" Key="S" Command="{Binding FileMenu.SaveFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="O" Command="{Binding FileMenu.OpenFile}"></KeyBinding>
         <KeyBinding Modifiers="Control+Shift" Key="S" Command="{Binding FileMenu.SaveFileAs}"></KeyBinding>
         <KeyBinding Modifiers="Control" Key="Q" Command="{Binding FileMenu.CloseNotepad}"></KeyBinding>
         <KeyBinding Modifiers="Control" Key="P" Command="{Binding FileMenu.PrintFile}"></KeyBinding>
