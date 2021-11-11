@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Olympiarenkaat", "Olympiarenkaat\Olympiarenkaat.csproj", "{B72D2815-AA26-4932-AC37-0626D7E6068A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B72D2815-AA26-4932-AC37-0626D7E6068A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B72D2815-AA26-4932-AC37-0626D7E6068A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B72D2815-AA26-4932-AC37-0626D7E6068A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B72D2815-AA26-4932-AC37-0626D7E6068A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FF23B634-BB47-4853-BE1E-4BFE5F168FA6}
+	EndGlobalSection
+EndGlobal
