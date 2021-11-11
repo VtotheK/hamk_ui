@@ -7,17 +7,24 @@
         mc:Ignorable="d"
         Title="{Binding FileMenu.Doc.FileName, StringFormat= '\{0\} - Notepad'}" 
         Height="450" Width="800">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="N" Command="{Binding FileMenu.NewFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="S" Command="{Binding FileMenu.SaveFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control+Shift" Key="S" Command="{Binding FileMenu.SaveFileAs}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="Q" Command="{Binding FileMenu.CloseNotepad}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="P" Command="{Binding FileMenu.PrintFile}"></KeyBinding>
+    </Window.InputBindings>
     <Grid>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_File">
-                    <MenuItem Header="_New" Command="{Binding FileMenu.NewFile}"></MenuItem>
-                    <MenuItem Header="_Open" Command="{Binding FileMenu.OpenFile}"></MenuItem>
-                    <MenuItem Header="_Save" Command="{Binding FileMenu.SaveFile}"></MenuItem>
-                    <MenuItem Header="Save _as" Command="{Binding FileMenu.SaveFileAs}"></MenuItem>
-                    <MenuItem Header="_Print" Command="{Binding FileMenu.PrintFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+N" Header="_New" Command="{Binding FileMenu.NewFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+O" Header="_Open" Command="{Binding FileMenu.OpenFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+S" Header="_Save" Command="{Binding FileMenu.SaveFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+Shift+S" Header="Save _as" Command="{Binding FileMenu.SaveFileAs}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+P" Header="_Print" Command="{Binding FileMenu.PrintFile}"></MenuItem>
                     <Separator/>
-                    <MenuItem Header="E_xit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+Q" Header="E_xit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="_Copy" Command="ApplicationCommands.Copy">
