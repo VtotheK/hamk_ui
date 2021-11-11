@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Notepad.View"
         mc:Ignorable="d"
         Title="FormatWindow" Height="300" Width="300"
-        >
+        Window.Closed="CloseWindow">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="6*"></ColumnDefinition> 
@@ -41,7 +41,7 @@
             <RadioButton Margin="10" Checked="FontColorNonMVVM" FontSize="14" Foreground="Green">Green</RadioButton>
             <RadioButton Margin="10" Checked="FontColorNonMVVM" FontSize="14" Foreground="Blue">Blue</RadioButton> 
         </StackPanel>
-        <Button Command="{Binding RevertChanges}" Click="CloseWindow" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="1">Cancel</Button>
-        <Button Command="{Binding ApplyChanges}" Click="CloseWindow" HorizontalAlignment="Right" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="0">Save</Button>
+        <Button Command="{Binding RevertChanges}" Click="CloseWindowFromButton" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="1">Cancel</Button>
+        <Button x:Name="ApplyChanges" Command="{Binding ApplyChanges}" Click="CloseWindowFromButton" HorizontalAlignment="Right" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="0">Save</Button>
     </Grid>
 </Window>

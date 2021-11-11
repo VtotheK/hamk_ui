@@ -14,6 +14,7 @@
         <KeyBinding Modifiers="Control+Shift" Key="S" Command="{Binding FileMenu.SaveFileAs}"></KeyBinding>
         <KeyBinding Modifiers="Control" Key="Q" Command="{Binding FileMenu.CloseNotepad}"></KeyBinding>
         <KeyBinding Modifiers="Control" Key="P" Command="{Binding FileMenu.PrintFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="F" Command="{Binding FormatMenuShow}"></KeyBinding>
     </Window.InputBindings>
     <Grid>
         <DockPanel>
@@ -25,7 +26,7 @@
                     <MenuItem InputGestureText="Ctrl+Shift+S" Header="Save _as" Command="{Binding FileMenu.SaveFileAs}"></MenuItem>
                     <MenuItem InputGestureText="Ctrl+P" Header="_Print" Command="{Binding FileMenu.PrintFile}"></MenuItem>
                     <Separator/>
-                    <MenuItem InputGestureText="Ctrl+Q" Header="E_xit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+Q" Header="_Exit" Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="_Edit">
                     <MenuItem Header="_Copy" Command="ApplicationCommands.Copy">
@@ -33,7 +34,7 @@
                     <MenuItem Header="_Paste" Command="ApplicationCommands.Paste">
                     </MenuItem>
                 </MenuItem>
-                <MenuItem Header="Fo_rmat">
+                <MenuItem Header="_Format">
                     <MenuItem Command="{Binding FormatMenuShow}" Header="F_ont"></MenuItem>
                 </MenuItem>
             </Menu>

@@ -1,4 +1,4 @@
-﻿using Notepad.ViewModel;
+using Notepad.ViewModel;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -54,13 +54,15 @@ namespace Notepad.View
 
         private void CloseWindowFromButton(object sender, RoutedEventArgs e)
         {
-            this.Closed -= CloseWindow;
             this.Close();
         }
 
         private void CloseWindow(object sender, EventArgs e)
         {
-            vm.cRevertChanges();
+            if (!ApplyChanges.IsPressed)
+            {
+                vm.cRevertChanges();
+            }
         }
     }
 }
