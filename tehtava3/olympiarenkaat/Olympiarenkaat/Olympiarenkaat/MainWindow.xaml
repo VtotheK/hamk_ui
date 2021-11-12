@@ -13,6 +13,9 @@
         </Grid.ColumnDefinitions>
         <Canvas x:Name="OlympicCanvas" Background="#FFEFE6E6">
         </Canvas>
-        <Button Grid.Column="1" Height="30" Width="100" Content="EXPLODE!" VerticalAlignment="Center" Click="CreateOlympicRings"></Button>
+        <StackPanel VerticalAlignment="Center" Grid.Column="1">
+            <Button  Height="30" Width="100" Margin="10" Content="Make Rings!" VerticalAlignment="Center" Click="CreateOlympicRings"></Button>
+            <Button  Height="30" Width="100" Content="EXPLODE!" VerticalAlignment="Center"></Button>
+        </StackPanel>
     </Grid>
 </Window>
