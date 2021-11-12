@@ -29,30 +29,38 @@ namespace Olympiarenkaat
 
         private void CreateOlympicRings(object sender, RoutedEventArgs e)
         {
-            int ringHeight = 100;
-            int ringWidth = 100;
-            double x = (OlympicCanvas.ActualWidth / 2.0) - (2.2 * ringWidth);
-            double y = OlympicCanvas.ActualHeight / 2 - (1.5 * ringHeight);
+            if (rings.Count() > 0)
+            {
+                foreach (var ring in rings)
+                {
+                    OlympicCanvas.Children.Remove(ring);
+                }
+            }
+            int ringHeight = 220;
+            int ringWidth = 220;
+            double x = (OlympicCanvas.ActualWidth / 2.0) - (1.6 * ringWidth);
+            double y = OlympicCanvas.ActualHeight / 2 - (ringHeight / 1.2);
             SolidColorBrush[] ringcolors = {Brushes.Blue, Brushes.Yellow, Brushes.Black, Brushes.Green, Brushes.Red};
             for (int i = 0; i < ringcolors.Length; ++i)
             {
                 Ellipse ring = new Ellipse();
                 ring.Height = ringHeight;
                 ring.Width = ringWidth;
-                ring.Fill = ringcolors[i];
+                ring.Stroke= ringcolors[i];
+                ring.StrokeThickness = 20;
                 OlympicCanvas.Children.Add(ring);
                 Canvas.SetLeft(ring, x);
                 Canvas.SetTop(ring, y);
                 rings.Add(ring);
-                if (i % 2 != 0)
+                if (i % 2 == 0)
                 {
-                    x += ringWidth;
-                    y += ringHeight;
+                    x += ringWidth / 1.8;
+                    y += ringHeight / 2.5;
                 }
                 else
                 {
-                    x += ringWidth;
-                    y -= ringHeight;
+                    x += ringWidth / 1.8;
+                    y -= ringHeight / 2.5;
                 }
             }
         }
