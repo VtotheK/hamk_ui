@@ -5,17 +5,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Olympiarenkaat"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="900">
+        Title="MainWindow" Height="800" Width="1024">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="7*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Canvas x:Name="OlympicCanvas" Background="#FFEFE6E6">
-        </Canvas>
-        <StackPanel VerticalAlignment="Center" Grid.Column="1">
-            <Button  Height="30" Width="90" Margin="10" Content="Make Rings!" VerticalAlignment="Center" Click="CreateOlympicRings"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="25*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" HorizontalAlignment="Center" Content="With Canvas class"></Label>
+        <Border Grid.Row="1" BorderBrush="Black" BorderThickness="2">
+            <Canvas Grid.Row="1" x:Name="OlympicCanvas" Background="#FFEFE6E6">
+            </Canvas>
+        </Border>
+        <StackPanel Grid.RowSpan="4" VerticalAlignment="Center" Grid.Column="1">
+            <CheckBox Margin="5" x:Name="CustomCanvasClass">
+                <TextBlock>Custom Canvas <LineBreak /> class</TextBlock>
+            </CheckBox>
+            <Button  Height="40" Width="90" Margin="10" Content="Make Rings!" VerticalAlignment="Center" Click="CreateOlympicRings"></Button>
             <Button x:Name="ExplodeBtn"  Height="30" Width="90" Content="EXPLODE!" VerticalAlignment="Center" Click="ExplosionAnimation"></Button>
         </StackPanel>
+        <Label Grid.Row="2" HorizontalAlignment="Center" Content="With custom Canvas class"></Label>
+        <local:MyCanvas Grid.Row="3" Background="#FFEFE6E6"></local:MyCanvas>
+
     </Grid>
 </Window>

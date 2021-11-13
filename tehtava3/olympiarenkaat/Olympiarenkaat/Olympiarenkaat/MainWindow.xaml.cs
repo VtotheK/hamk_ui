@@ -21,14 +21,27 @@ namespace Olympiarenkaat
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Ellipse> rings = new List<Ellipse>();
+        private List<UIElement> rings = new List<UIElement>();
+        private SolidColorBrush[] ringcolors = {Brushes.Blue, Brushes.Yellow, Brushes.Black, Brushes.Green, Brushes.Red};
 
         public MainWindow()
         {
             InitializeComponent();
         }
 
+
         private void CreateOlympicRings(object sender, RoutedEventArgs e)
+        {
+            if (CustomCanvasClass.IsChecked == true)
+            {
+                Console.WriteLine("Not implemented");
+            }
+            else
+            {
+                CreateOlympicRingsEllipses(false);
+            }
+        }
+        private void CreateOlympicRingsEllipses(bool customClass)
         {
             if (rings.Count() > 0)
             {
@@ -37,19 +50,25 @@ namespace Olympiarenkaat
                     OlympicCanvas.Children.Remove(ring);
                 }
             }
-            int ringHeight = 220;
-            int ringWidth = 220;
+            int ringHeight = 120;
+            int ringWidth = 120;
             double x = (OlympicCanvas.ActualWidth / 2.0) - (1.6 * ringWidth);
             double y = OlympicCanvas.ActualHeight / 2 - (ringHeight / 1.2);
-            SolidColorBrush[] ringcolors = {Brushes.Blue, Brushes.Yellow, Brushes.Black, Brushes.Green, Brushes.Red};
             for (int i = 0; i < ringcolors.Length; ++i)
             {
                 Ellipse ring = new Ellipse();
                 ring.Height = ringHeight;
                 ring.Width = ringWidth;
-                ring.Stroke= ringcolors[i];
-                ring.StrokeThickness = 20;
-                OlympicCanvas.Children.Add(ring);
+                ring.Stroke = ringcolors[i];
+                ring.StrokeThickness = 10;
+                if (customClass)
+                {
+
+                }
+                else
+                {
+                    OlympicCanvas.Children.Add(ring);
+                }
                 Canvas.SetLeft(ring, x);
                 Canvas.SetTop(ring, y);
                 rings.Add(ring);
@@ -77,10 +96,8 @@ namespace Olympiarenkaat
             {
                 int randleft = rnd.Next(900,1500);
                 int randtop = rnd.Next(900,1500);
-                int dirX = rnd.Next(1,3);
-                int dirY = rnd.Next(1,3);
-                dirX = dirX > 1 ? -1 : 1;
-                dirY = dirY > 1 ? -1 : 1;
+                int dirX = rnd.Next(1,3) > 1 ? -1 : 1;
+                int dirY = rnd.Next(1,3) > 1 ? -1 : 1;
                 double left = Canvas.GetLeft(rings[i]);
                 double top = Canvas.GetTop(rings[i]);
                 DoubleAnimation xAn = new DoubleAnimation();
