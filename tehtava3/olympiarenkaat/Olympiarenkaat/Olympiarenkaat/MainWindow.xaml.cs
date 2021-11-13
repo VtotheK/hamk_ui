@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows.Media.Animation;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,6 +63,32 @@ namespace Olympiarenkaat
                     x += ringWidth / 1.8;
                     y -= ringHeight / 2.5;
                 }
+            }
+        }
+
+        private void ExplosionAnimation(object sender, RoutedEventArgs e)
+        {
+            if (rings.Count() <= 0)
+            {
+                return;
+            }
+            var rnd = new Random();
+            for (int i = 0; i < rings.Count; ++i)
+            {
+                int randleft = rnd.Next(-2000,2000);
+                int randtop = rnd.Next(-2000,2000);
+                double left = Canvas.GetLeft(rings[i]);
+                double top = Canvas.GetTop(rings[i]);
+                DoubleAnimation xAn = new DoubleAnimation();
+                DoubleAnimation yAn = new DoubleAnimation();
+                xAn.From = left;
+                xAn.To = left + randleft;
+                yAn.From = top;
+                yAn.To = top + randtop;
+                xAn.Duration = new Duration(TimeSpan.Parse("0:0:5"));
+                yAn.Duration = new Duration(TimeSpan.Parse("0:0:5"));
+                rings[i].BeginAnimation(Canvas.LeftProperty,xAn);
+                rings[i].BeginAnimation(Canvas.TopProperty,yAn);
             }
         }
     }

@@ -15,7 +15,7 @@
         </Canvas>
         <StackPanel VerticalAlignment="Center" Grid.Column="1">
             <Button  Height="30" Width="100" Margin="10" Content="Make Rings!" VerticalAlignment="Center" Click="CreateOlympicRings"></Button>
-            <Button  Height="30" Width="100" Content="EXPLODE!" VerticalAlignment="Center"></Button>
+            <Button x:Name="ExplodeBtn"  Height="30" Width="100" Content="EXPLODE!" VerticalAlignment="Center" Click="ExplosionAnimation"></Button>
         </StackPanel>
     </Grid>
 </Window>
