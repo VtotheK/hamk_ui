@@ -75,8 +75,8 @@ namespace Olympiarenkaat
             var rnd = new Random();
             for (int i = 0; i < rings.Count; ++i)
             {
-                int randleft = rnd.Next(1000,2000);
-                int randtop = rnd.Next(1000,2000);
+                int randleft = rnd.Next(900,1500);
+                int randtop = rnd.Next(900,1500);
                 int dirX = rnd.Next(1,3);
                 int dirY = rnd.Next(1,3);
                 dirX = dirX > 1 ? -1 : 1;
