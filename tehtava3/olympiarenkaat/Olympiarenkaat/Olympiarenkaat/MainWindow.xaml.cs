@@ -75,16 +75,20 @@ namespace Olympiarenkaat
             var rnd = new Random();
             for (int i = 0; i < rings.Count; ++i)
             {
-                int randleft = rnd.Next(-2000,2000);
-                int randtop = rnd.Next(-2000,2000);
+                int randleft = rnd.Next(1000,2000);
+                int randtop = rnd.Next(1000,2000);
+                int dirX = rnd.Next(1,3);
+                int dirY = rnd.Next(1,3);
+                dirX = dirX > 1 ? -1 : 1;
+                dirY = dirY > 1 ? -1 : 1;
                 double left = Canvas.GetLeft(rings[i]);
                 double top = Canvas.GetTop(rings[i]);
                 DoubleAnimation xAn = new DoubleAnimation();
                 DoubleAnimation yAn = new DoubleAnimation();
                 xAn.From = left;
-                xAn.To = left + randleft;
+                xAn.To = (left + randleft) * dirX;
                 yAn.From = top;
-                yAn.To = top + randtop;
+                yAn.To = (top + randtop) * dirY;
                 xAn.Duration = new Duration(TimeSpan.Parse("0:0:5"));
                 yAn.Duration = new Duration(TimeSpan.Parse("0:0:5"));
                 rings[i].BeginAnimation(Canvas.LeftProperty,xAn);
