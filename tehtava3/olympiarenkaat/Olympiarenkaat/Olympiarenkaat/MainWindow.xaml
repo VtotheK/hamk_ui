@@ -22,14 +22,13 @@
             <Canvas Grid.Row="1" x:Name="OlympicCanvas" Background="#FFEFE6E6">
             </Canvas>
         </Border>
-        <StackPanel Grid.RowSpan="4" VerticalAlignment="Center" Grid.Column="1">
-            <CheckBox Margin="5" x:Name="CustomCanvasClass">
-                <TextBlock>Custom Canvas <LineBreak /> class</TextBlock>
-            </CheckBox>
+        <StackPanel Grid.RowSpan="3" VerticalAlignment="Center" Grid.Column="1">
             <Button  Height="40" Width="90" Margin="10" Content="Make Rings!" VerticalAlignment="Center" Click="CreateOlympicRings"></Button>
             <Button x:Name="ExplodeBtn"  Height="30" Width="90" Content="EXPLODE!" VerticalAlignment="Center" Click="ExplosionAnimation"></Button>
         </StackPanel>
         <Label Grid.Row="2" HorizontalAlignment="Center" Content="With custom Canvas class"></Label>
-        <local:MyCanvas x:Name="CustomCanvas" Grid.Row="3" Background="#FFEFE6E6"></local:MyCanvas>
+        <Border Grid.Row="3" BorderBrush="Black" BorderThickness="2">
+            <local:MyCanvas x:Name="CustomCanvas" Grid.Row="3" Background="#FFEFE6E6"></local:MyCanvas>
+        </Border>
     </Grid>
 </Window>
