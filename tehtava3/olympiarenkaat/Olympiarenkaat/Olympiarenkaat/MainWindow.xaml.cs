@@ -22,8 +22,7 @@ namespace Olympiarenkaat
     public partial class MainWindow : Window
     {
         private List<UIElement> rings = new List<UIElement>();
-        private SolidColorBrush[] ringcolors = {Brushes.Blue, Brushes.Yellow, Brushes.Black, Brushes.Green, Brushes.Red};
-
+        private SolidColorBrush[] ringcolors = { Brushes.Blue, Brushes.Yellow, Brushes.Black, Brushes.Green, Brushes.Red };
         public MainWindow()
         {
             InitializeComponent();
@@ -34,7 +33,7 @@ namespace Olympiarenkaat
         {
             if (CustomCanvasClass.IsChecked == true)
             {
-                Console.WriteLine("Not implemented");
+                CreateOlympicRingsEllipses(true);
             }
             else
             {
@@ -43,13 +42,7 @@ namespace Olympiarenkaat
         }
         private void CreateOlympicRingsEllipses(bool customClass)
         {
-            if (rings.Count() > 0)
-            {
-                foreach (var ring in rings)
-                {
-                    OlympicCanvas.Children.Remove(ring);
-                }
-            }
+            ClearRings(customClass);
             int ringHeight = 120;
             int ringWidth = 120;
             double x = (OlympicCanvas.ActualWidth / 2.0) - (1.6 * ringWidth);
@@ -63,15 +56,20 @@ namespace Olympiarenkaat
                 ring.StrokeThickness = 10;
                 if (customClass)
                 {
-
+                    CustomCanvas.Children.Add(ring);
+                    CustomCanvas.X = x;
+                    CustomCanvas.Y = y;
+                    Canvas.SetLeft(ring, x);
+                    Canvas.SetTop(ring, y);
+                    CustomCanvas.Rings.Add(ring);
                 }
                 else
                 {
                     OlympicCanvas.Children.Add(ring);
+                    Canvas.SetLeft(ring, x);
+                    Canvas.SetTop(ring, y);
+                    rings.Add(ring);
                 }
-                Canvas.SetLeft(ring, x);
-                Canvas.SetTop(ring, y);
-                rings.Add(ring);
                 if (i % 2 == 0)
                 {
                     x += ringWidth / 1.8;
@@ -94,10 +92,10 @@ namespace Olympiarenkaat
             var rnd = new Random();
             for (int i = 0; i < rings.Count; ++i)
             {
-                int randleft = rnd.Next(900,1500);
-                int randtop = rnd.Next(900,1500);
-                int dirX = rnd.Next(1,3) > 1 ? -1 : 1;
-                int dirY = rnd.Next(1,3) > 1 ? -1 : 1;
+                int randleft = rnd.Next(900, 1500);
+                int randtop = rnd.Next(900, 1500);
+                int dirX = rnd.Next(1, 3) > 1 ? -1 : 1;
+                int dirY = rnd.Next(1, 3) > 1 ? -1 : 1;
                 double left = Canvas.GetLeft(rings[i]);
                 double top = Canvas.GetTop(rings[i]);
                 DoubleAnimation xAn = new DoubleAnimation();
@@ -108,8 +106,20 @@ namespace Olympiarenkaat
                 yAn.To = (top + randtop) * dirY;
                 xAn.Duration = new Duration(TimeSpan.Parse("0:0:5"));
                 yAn.Duration = new Duration(TimeSpan.Parse("0:0:5"));
-                rings[i].BeginAnimation(Canvas.LeftProperty,xAn);
-                rings[i].BeginAnimation(Canvas.TopProperty,yAn);
+                rings[i].BeginAnimation(Canvas.LeftProperty, xAn);
+                rings[i].BeginAnimation(Canvas.TopProperty, yAn);
+            }
+        }
+
+        private void ClearRings(bool customClass)
+        {
+            foreach (var ring in rings)
+            {
+                OlympicCanvas.Children.Remove(ring);
+            }
+            foreach (var ring in CustomCanvas.Rings)
+            {
+                CustomCanvas.Children.Remove(ring);
             }
         }
     }
