@@ -39,6 +39,10 @@
                 <MenuItem Header="{x:Static p:Resources.Format}">
                     <MenuItem Command="{Binding FormatMenuShow}" Header="{x:Static p:Resources.FormatFont}"></MenuItem>
                 </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.Language}">
+                    <MenuItem Click="ChangeLanguageEn" Header="{x:Static p:Resources.English}"></MenuItem>
+                    <MenuItem Click="ChangeLanguageSwe" Header="{x:Static p:Resources.Swedish}"></MenuItem>
+                </MenuItem>
             </Menu>
             <TextBox TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
             </TextBox>

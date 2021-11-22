@@ -130,10 +130,10 @@
     <value>Edit</value>
   </data>
   <data name="EditCopy" xml:space="preserve">
-    <value>Copy</value>
+    <value>EditCopy</value>
   </data>
   <data name="EditPaste" xml:space="preserve">
-    <value>Paste</value>
+    <value>EditPaste</value>
   </data>
   <data name="English" xml:space="preserve">
     <value>English</value>
@@ -142,7 +142,7 @@
     <value>File</value>
   </data>
   <data name="FileClose" xml:space="preserve">
-    <value>Exit</value>
+    <value>Close</value>
   </data>
   <data name="FileExit" xml:space="preserve">
     <value>Exit</value>
@@ -187,6 +187,6 @@
     <value>Save</value>
   </data>
   <data name="Swedish" xml:space="preserve">
-    <value>Swedish</value>
+    <value>Sweden</value>
   </data>
 </root>

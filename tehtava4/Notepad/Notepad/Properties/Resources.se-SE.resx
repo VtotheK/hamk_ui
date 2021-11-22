@@ -135,6 +135,9 @@
   <data name="EditPaste" xml:space="preserve">
     <value>Infoga</value>
   </data>
+  <data name="English" xml:space="preserve">
+    <value>Engelsk</value>
+  </data>
   <data name="File" xml:space="preserve">
     <value>Fil</value>
   </data>
@@ -174,10 +177,16 @@
   <data name="Green" xml:space="preserve">
     <value>Grön</value>
   </data>
+  <data name="Language" xml:space="preserve">
+    <value>Språk</value>
+  </data>
   <data name="Red" xml:space="preserve">
     <value>Röd</value>
   </data>
   <data name="Save" xml:space="preserve">
     <value>Spara</value>
+  </data>
+  <data name="Swedish" xml:space="preserve">
+    <value>Svenska</value>
   </data>
 </root>

@@ -1,4 +1,7 @@
 ﻿using Notepad.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows;
 
 namespace Notepad
@@ -11,10 +14,31 @@ namespace Notepad
         NotepadViewModel vm;
         public MainWindow()
         {
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("se-SE");
+            string lang = Properties.Settings.Default.AppLang;
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
             InitializeComponent();
             vm = new NotepadViewModel(this);
             DataContext = vm;
         }
+
+        private void ChangeLanguageEn(object sender, RoutedEventArgs e)
+        {
+            string lang = Properties.Settings.Default.AppLang;
+            if(lang != "en-EN") { 
+                MessageBox.Show("Language will change after restart.", "Info", MessageBoxButton.OK);
+                Properties.Settings.Default.AppLang = "en-EN";
+                Properties.Settings.Default.Save();
+            }
+        }
+        private void ChangeLanguageSwe(object sender, RoutedEventArgs e)
+        {
+            string lang = Properties.Settings.Default.AppLang;
+            if(lang != "se-SE") { 
+                MessageBox.Show("Language will change after restart.", "Info", MessageBoxButton.OK);
+                Properties.Settings.Default.AppLang = "se-SE";
+                Properties.Settings.Default.Save();
+            }
+        }
+
     }
 }

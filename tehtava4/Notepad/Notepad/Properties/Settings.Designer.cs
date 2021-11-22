@@ -22,5 +22,17 @@ namespace Notepad.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("se-SE")]
+        public string AppLang {
+            get {
+                return ((string)(this["AppLang"]));
+            }
+            set {
+                this["AppLang"] = value;
+            }
+        }
     }
 }
