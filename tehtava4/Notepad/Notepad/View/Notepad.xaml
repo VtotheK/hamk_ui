@@ -7,7 +7,7 @@
         xmlns:p="clr-namespace:Notepad.Properties;assembly=Notepad"
         mc:Ignorable="d"
         Title="{Binding FileMenu.Doc.FileName, StringFormat= '\{0\} - Notepad'}" 
-        Height="450" Width="800">
+        Height="650" Width="1000">
     <Window.InputBindings>
         <KeyBinding Modifiers="Control" Key="N" Command="{Binding FileMenu.NewFile}"></KeyBinding>
         <KeyBinding Modifiers="Control" Key="S" Command="{Binding FileMenu.SaveFile}"></KeyBinding>
@@ -18,7 +18,16 @@
         <KeyBinding Modifiers="Control" Key="F" Command="{Binding FormatMenuShow}"></KeyBinding>
     </Window.InputBindings>
     <Grid>
-        <DockPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="15*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"></RowDefinition> 
+            <RowDefinition Height="10*"></RowDefinition> 
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="{x:Static p:Resources.File}">
                     <MenuItem InputGestureText="Ctrl+N" Header="{x:Static p:Resources.FileNew}" Command="{Binding FileMenu.NewFile}"></MenuItem>
@@ -44,8 +53,14 @@
                     <MenuItem Click="ChangeLanguageSwe" Header="{x:Static p:Resources.Swedish}"></MenuItem>
                 </MenuItem>
             </Menu>
-            <TextBox TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox">
-            </TextBox>
         </DockPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" ScrollChanged="ScrollViewer_ScrollChanged">
+                <TextBox Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox"/>
+        </ScrollViewer>
+        <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="1" Grid.Column="1">
+            <InkCanvas x:Name="Notepad_inkcanvas"  Grid.Row="1" Grid.Column="1"> 
+                
+            </InkCanvas>
+        </Border>
     </Grid>
 </Window>

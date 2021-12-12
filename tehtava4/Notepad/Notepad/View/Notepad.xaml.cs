@@ -1,8 +1,11 @@
 ﻿using Notepad.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Media;
 using System.IO;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace Notepad
 {
@@ -11,6 +14,7 @@ namespace Notepad
     /// </summary>
     public partial class MainWindow : Window
     {
+        double scrollY = 0;
         NotepadViewModel vm;
         public MainWindow()
         {
@@ -30,6 +34,7 @@ namespace Notepad
                 Properties.Settings.Default.Save();
             }
         }
+
         private void ChangeLanguageSwe(object sender, RoutedEventArgs e)
         {
             string lang = Properties.Settings.Default.AppLang;
@@ -40,5 +45,16 @@ namespace Notepad
             }
         }
 
+        private void ScrollViewer_ScrollChanged(object sender, System.Windows.Controls.ScrollChangedEventArgs e)
+        {
+            TextBox textBox = (TextBox)Notepad_textbox;
+            ScrollViewer scrollBar = (ScrollViewer)sender;
+            InkCanvas canvas = (InkCanvas)Notepad_inkcanvas;
+            double textBoxHeight = textBox.ActualHeight;
+            Notepad_inkcanvas.Height = textBoxHeight;
+            Matrix moveMatrix = new Matrix(1, 0, 0, 1, 0, scrollY - scrollBar.VerticalOffset);
+            canvas.Strokes.Transform(moveMatrix, false);
+            scrollY = scrollBar.VerticalOffset;
+        }
     }
 }
