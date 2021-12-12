@@ -6,6 +6,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using Microsoft.Win32;
+using System.Drawing.Imaging;
+using System.Windows.Media.Imaging;
 
 namespace Notepad.ViewModel
 {
@@ -54,7 +56,16 @@ namespace Notepad.ViewModel
         {
             if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
             {
-                File.WriteAllText(Doc.FilePath, NotepadViewModel.NotepadTextFieldContentGet());
+                using (System.IO.MemoryStream ms = new MemoryStream())
+                {
+                    using (Bitmap bm = new Bitmap(Doc.ImageNotes))
+                    {
+                        bm.Save(ms, ImageFormat.Jpeg);
+                        byte[] byteImage = ms.ToArray();
+                        string SigBase64 = Convert.ToBase64String(byteImage); // Get Base64
+                        Console.WriteLine(SigBase64); 
+                    }
+                }
             }
             else
             {

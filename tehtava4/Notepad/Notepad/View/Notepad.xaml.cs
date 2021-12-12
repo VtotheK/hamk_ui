@@ -37,12 +37,15 @@ namespace Notepad
             BmpBitmapEncoder encoder = new BmpBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create(rtb));
             rtb.Render(canvas);
-
             using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
             {
-                encoder.Save(ms);
-                Bitmap bitmap = new Bitmap(ms);
-                vm.FileMenu.Doc.ImageNotes = (Bitmap)bitmap.Clone();
+                using (Bitmap bitmap = new Bitmap(ms))
+                {
+                    encoder.Save(ms);
+                    if (vm.FileMenu.Doc.ImageNotes != null)
+                        vm.FileMenu.Doc.ImageNotes.Dispose();
+                    vm.FileMenu.Doc.ImageNotes = (Bitmap)bitmap.Clone();
+                }
             }
         }
 
