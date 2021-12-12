@@ -58,8 +58,7 @@
                 <TextBox Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox"/>
         </ScrollViewer>
         <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="1" Grid.Column="1">
-            <InkCanvas x:Name="Notepad_inkcanvas"  Grid.Row="1" Grid.Column="1"> 
-                
+            <InkCanvas x:Name="Notepad_inkcanvas"  Grid.Row="1" Grid.Column="1">
             </InkCanvas>
         </Border>
     </Grid>

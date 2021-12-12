@@ -1,11 +1,15 @@
-﻿namespace Notepad.Model
+﻿using System.Drawing;
+using System.Windows.Controls;
+using System.Windows.Ink;
+
+namespace Notepad.Model
 {
     class Document : ObservableObject
     {
         private string _filePath = null;
         private string _content = "";
         private string _fileName = null;
-
+        private Bitmap _imageNotes;
         public string FilePath
         {
             get { return _filePath; }
@@ -31,6 +35,12 @@
             {
                 OnPropertyChanged(ref _fileName, value);
             }
+        }
+
+        public Bitmap ImageNotes 
+        {
+            get { return _imageNotes; }
+            set { _imageNotes = value;  }
         }
     }
 }

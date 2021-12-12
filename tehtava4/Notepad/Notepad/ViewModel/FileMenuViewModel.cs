@@ -65,8 +65,8 @@ namespace Notepad.ViewModel
         public void cSaveFileAs()
         {
             var diag = new SaveFileDialog();
-            diag.Filter = "Text files (.txt)|*.txt|All files (*.*)|*.*";
-            diag.DefaultExt = ".txt";
+            diag.Filter = "Text files (.tst)|*.tst|All files (*.*)|*.*";
+            diag.DefaultExt = ".tst";
             if (diag.ShowDialog() == true)
             {
                 string path = diag.FileName;

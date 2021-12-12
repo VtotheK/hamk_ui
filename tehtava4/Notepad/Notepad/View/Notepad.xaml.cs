@@ -6,6 +6,8 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Drawing;
 
 namespace Notepad
 {
@@ -15,6 +17,7 @@ namespace Notepad
     public partial class MainWindow : Window
     {
         double scrollY = 0;
+        InkCanvas canvas; 
         NotepadViewModel vm;
         public MainWindow()
         {
@@ -22,7 +25,25 @@ namespace Notepad
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(lang);
             InitializeComponent();
             vm = new NotepadViewModel(this);
+            canvas = (InkCanvas)Notepad_inkcanvas;
+            canvas.Strokes.StrokesChanged += Strokes_StrokesChanged;
             DataContext = vm;
+        }
+
+        private void Strokes_StrokesChanged(object sender, System.Windows.Ink.StrokeCollectionChangedEventArgs e)
+        {
+            RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvas.ActualWidth, (int)canvas.ActualHeight, 96, 96, System.Windows.Media.PixelFormats.Default);
+            rtb.Render(canvas);
+            BmpBitmapEncoder encoder = new BmpBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(rtb));
+            rtb.Render(canvas);
+
+            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
+            {
+                encoder.Save(ms);
+                Bitmap bitmap = new Bitmap(ms);
+                vm.FileMenu.Doc.ImageNotes = (Bitmap)bitmap.Clone();
+            }
         }
 
         private void ChangeLanguageEn(object sender, RoutedEventArgs e)
@@ -49,7 +70,6 @@ namespace Notepad
         {
             TextBox textBox = (TextBox)Notepad_textbox;
             ScrollViewer scrollBar = (ScrollViewer)sender;
-            InkCanvas canvas = (InkCanvas)Notepad_inkcanvas;
             double textBoxHeight = textBox.ActualHeight;
             Notepad_inkcanvas.Height = textBoxHeight;
             Matrix moveMatrix = new Matrix(1, 0, 0, 1, 0, scrollY - scrollBar.VerticalOffset);

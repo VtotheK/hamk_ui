@@ -14,7 +14,7 @@ namespace Notepad.Model
         }
         public DocumentFormat()
         {
-            _fontSize = 12;
+            _fontSize = 22;
             _fontColor = Brushes.Black;
         }
 
