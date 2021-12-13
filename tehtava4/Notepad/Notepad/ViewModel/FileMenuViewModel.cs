@@ -1,4 +1,6 @@
 ﻿using Notepad.Model;
+using Notepad.Headers;
+using Notepad.Utils;
 using System;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -8,6 +10,10 @@ using System.Windows.Controls;
 using Microsoft.Win32;
 using System.Drawing.Imaging;
 using System.Windows.Media.Imaging;
+using System.Windows.Ink;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Notepad.ViewModel
 {
@@ -56,16 +62,7 @@ namespace Notepad.ViewModel
         {
             if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
             {
-                using (System.IO.MemoryStream ms = new MemoryStream())
-                {
-                    using (Bitmap bm = new Bitmap(Doc.ImageNotes))
-                    {
-                        bm.Save(ms, ImageFormat.Jpeg);
-                        byte[] byteImage = ms.ToArray();
-                        string SigBase64 = Convert.ToBase64String(byteImage); // Get Base64
-                        Console.WriteLine(SigBase64); 
-                    }
-                }
+                FileUtils.WriteDocumentToFile(Doc);
             }
             else
             {

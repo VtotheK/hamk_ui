@@ -32,21 +32,8 @@ namespace Notepad
 
         private void Strokes_StrokesChanged(object sender, System.Windows.Ink.StrokeCollectionChangedEventArgs e)
         {
-            RenderTargetBitmap rtb = new RenderTargetBitmap((int)canvas.ActualWidth, (int)canvas.ActualHeight, 96, 96, System.Windows.Media.PixelFormats.Default);
-            rtb.Render(canvas);
-            BmpBitmapEncoder encoder = new BmpBitmapEncoder();
-            encoder.Frames.Add(BitmapFrame.Create(rtb));
-            rtb.Render(canvas);
-            using (System.IO.MemoryStream ms = new System.IO.MemoryStream())
-            {
-                using (Bitmap bitmap = new Bitmap(ms))
-                {
-                    encoder.Save(ms);
-                    if (vm.FileMenu.Doc.ImageNotes != null)
-                        vm.FileMenu.Doc.ImageNotes.Dispose();
-                    vm.FileMenu.Doc.ImageNotes = (Bitmap)bitmap.Clone();
-                }
-            }
+            vm.FileMenu.Doc.ImageNotes.Add(e.Added);
+            vm.FileMenu.Doc.ImageNotes.Remove(e.Removed);
         }
 
         private void ChangeLanguageEn(object sender, RoutedEventArgs e)

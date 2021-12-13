@@ -9,7 +9,7 @@ namespace Notepad.Model
         private string _filePath = null;
         private string _content = "";
         private string _fileName = null;
-        private Bitmap _imageNotes;
+        private StrokeCollection _imageNotes = new StrokeCollection();
         public string FilePath
         {
             get { return _filePath; }
@@ -37,7 +37,7 @@ namespace Notepad.Model
             }
         }
 
-        public Bitmap ImageNotes 
+        public StrokeCollection ImageNotes 
         {
             get { return _imageNotes; }
             set { _imageNotes = value;  }

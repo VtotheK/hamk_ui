@@ -70,6 +70,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Converters\FormatListboxConverter.cs" />
+    <Compile Include="Headers\FileHeader.cs" />
     <Compile Include="Model\Document.cs" />
     <Compile Include="Model\DocumentFormat.cs" />
     <Compile Include="ObservableObject.cs" />
