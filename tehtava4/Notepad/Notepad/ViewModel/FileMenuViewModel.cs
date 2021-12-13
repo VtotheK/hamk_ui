@@ -62,6 +62,7 @@ namespace Notepad.ViewModel
         {
             if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
             {
+                Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
                 FileUtils.WriteDocumentToFile(Doc);
             }
             else
@@ -79,9 +80,7 @@ namespace Notepad.ViewModel
             {
                 string path = diag.FileName;
                 Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
-                Doc.FilePath = path;
-                Doc.FileName = Path.GetFileName(path);
-                File.WriteAllText(path, Doc.Content);
+                FileUtils.WriteDocumentToFile(Doc);
             }
         }
         public void cOpenFile()
@@ -99,8 +98,12 @@ namespace Notepad.ViewModel
                         return;
                     }
                 }
-                Doc = FileUtils.ReadDocumentFromFile(diag.FileName); 
-                PopulateTextBox(Doc);
+                Document d = FileUtils.ReadDocumentFromFile(diag.FileName);
+                Doc.FilePath = d.FilePath;
+                Doc.Content = d.Content;
+                Doc.ImageNotes = d.ImageNotes;
+                Doc.FileName = diag.FileName;
+                //PopulateTextBox(Doc);
             }
         }
 

@@ -15,20 +15,16 @@ namespace Notepad.Utils
     {
         public static void WriteDocumentToFile(Document doc)
         {
-            string SigBase64 = "";
+            //string SigBase64 = "";
             using (System.IO.MemoryStream ms = new MemoryStream())
             {
                 doc.ImageNotes.Save(ms, false);
-                byte[] byteImage = ms.ToArray();
+                byte[] byteImage = (byte[])ms.ToArray();
                 ms.Position = 0;
                 Encoding encoding = Encoding.UTF8;
                 byte[] textArray = encoding.GetBytes(doc.Content);
-                SigBase64 = Convert.ToBase64String(byteImage); // Get Base64
-                FileHeader header = new FileHeader(SigBase64.Length, doc.Content.Length);
-                var formatter = new BinaryFormatter();
-                ms.Position = 0;
-                formatter.Serialize(ms, header);
-                ms.Position = 0;
+                //SigBase64 = Convert.ToBase64String(byteImage); // Get Base64
+                FileHeader header = new FileHeader(byteImage.Length, textArray.Length , FileHeader.HeaderMagic);
                 using (FileStream fs = File.Open(doc.FilePath, FileMode.Create))
                 {
                     fs.Write(BitConverter.GetBytes(FileHeader.HeaderMagic), 0, Marshal.SizeOf(typeof(int)));
@@ -42,6 +38,8 @@ namespace Notepad.Utils
 
         public static Document ReadDocumentFromFile(string path)
         {
+            Document doc = new Document();
+            doc.FilePath = path;
             byte[] fileArr = File.ReadAllBytes(path);
             using (MemoryStream ms = new MemoryStream(fileArr))
             {
@@ -49,20 +47,41 @@ namespace Notepad.Utils
                 if(header.Header != FileHeader.HeaderMagic)
                 {
                     Console.WriteLine("Invalid file");
+                    return null;
                 }
+                PopulateDocument(doc, header, ms);
             }
-            return null;
+            return doc;
+        }
+
+        private static void PopulateDocument(Document doc, FileHeader header, MemoryStream ms)
+        {
+            byte[] strokeCollection = new byte[header.StrokeCollectionSize];
+            byte[] textFile = new byte[header.TextSize];
+            ms.Read(strokeCollection, 0, header.StrokeCollectionSize);
+            ms.Read(textFile, 0, header.TextSize);
+            Encoding encoding = Encoding.UTF8;
+            using (MemoryStream strokeStream = new MemoryStream(strokeCollection))
+            {
+                doc.ImageNotes = new System.Windows.Ink.StrokeCollection(strokeStream);
+            }
+            doc.Content = encoding.GetString(textFile);
         }
 
         private static FileHeader ExtractHeader(MemoryStream ms)
         {
+            FileHeader header = new FileHeader();
             byte[] headerMagic = new byte[sizeof(int)];
             byte[] strokeCollectionSize= new byte[sizeof(int)];
             byte[] textFileSize = new byte[sizeof(int)];
-            FileHeader header = new FileHeader();
-            header.Header = ms.Read(headerMagic, 0, Marshal.SizeOf(typeof(int)));
-            header.StrokeCollectionSize = ms.Read(strokeCollectionSize, 0, Marshal.SizeOf(typeof(int)));
-            header.TextSize = ms.Read(textFileSize, 0, Marshal.SizeOf(typeof(int)));
+            ms.Read(headerMagic, 0, Marshal.SizeOf(typeof(int)));
+            ms.Read(strokeCollectionSize, 0, sizeof(int));
+            ms.Read(textFileSize, 0, sizeof(int));
+
+            header.Header = BitConverter.ToInt32(headerMagic,0);
+            header.StrokeCollectionSize= BitConverter.ToInt32(strokeCollectionSize,0);
+            header.TextSize = BitConverter.ToInt32(textFileSize,0);
+
             return header;
         }
     }

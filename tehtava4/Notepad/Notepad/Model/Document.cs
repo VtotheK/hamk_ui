@@ -10,6 +10,8 @@ namespace Notepad.Model
         private string _content = "";
         private string _fileName = null;
         private StrokeCollection _imageNotes = new StrokeCollection();
+
+        public Document() { }
         public string FilePath
         {
             get { return _filePath; }
@@ -40,7 +42,10 @@ namespace Notepad.Model
         public StrokeCollection ImageNotes 
         {
             get { return _imageNotes; }
-            set { _imageNotes = value;  }
+            set
+            {
+                OnPropertyChanged(ref _imageNotes, value);
+            }
         }
     }
 }

@@ -14,10 +14,11 @@ namespace Notepad.Headers
         public int TextSize;
         public int Header;
 
-        public FileHeader(int strokeCollectionSize, int textSize)
+        public FileHeader(int strokeCollectionSize, int textSize, int header)
         {
             StrokeCollectionSize = strokeCollectionSize;
             TextSize = textSize;
+            Header = header;
         }
     }
 }
