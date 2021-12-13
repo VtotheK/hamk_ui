@@ -87,8 +87,8 @@ namespace Notepad.ViewModel
         public void cOpenFile()
         {
             OpenFileDialog diag = new OpenFileDialog();
-            diag.DefaultExt = ".txt";
-            diag.Filter = "Text files (.txt)|*.txt|All files (*.*)|*.*";
+            diag.DefaultExt = ".tst";
+            diag.Filter = "Test files (.tst)|*.tst|All files (*.*)|*.*";
             if (diag.ShowDialog() == true)
             {
                 if (IsDocumentEdited())
@@ -99,8 +99,7 @@ namespace Notepad.ViewModel
                         return;
                     }
                 }
-                Doc.FilePath = diag.FileName;
-                Doc.FileName = Path.GetFileName(diag.FileName);
+                Doc = FileUtils.ReadDocumentFromFile(diag.FileName); 
                 PopulateTextBox(Doc);
             }
         }
@@ -115,9 +114,7 @@ namespace Notepad.ViewModel
                     return;
                 }
             }
-            Doc.FilePath = String.Empty;
-            Doc.FileName = String.Empty;
-            Doc.Content = String.Empty;
+            ClearDocument();
         }
 
         private void cCloseNotepad()
@@ -156,6 +153,14 @@ namespace Notepad.ViewModel
         private void PrintPage(object sender, PrintPageEventArgs ev)
         {
             ev.Graphics.DrawString(Doc.Content, new System.Drawing.Font("Arial", 1), Brushes.Black, ev.MarginBounds.Left, 0, new StringFormat());
+        }
+
+        private void ClearDocument()
+        {
+            Doc.FilePath = String.Empty;
+            Doc.FileName = String.Empty;
+            Doc.Content = String.Empty;
+            Doc.ImageNotes = new StrokeCollection();
         }
         private void PopulateTextBox(Document doc)
         {
