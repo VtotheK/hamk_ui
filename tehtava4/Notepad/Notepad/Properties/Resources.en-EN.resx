@@ -123,6 +123,9 @@
   <data name="Blue" xml:space="preserve">
     <value>Blue</value>
   </data>
+  <data name="Calculator" xml:space="preserve">
+    <value>Calculator</value>
+  </data>
   <data name="Cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>

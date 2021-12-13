@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
+using System.Reflection;
 
 namespace Notepad
 {
@@ -26,7 +27,15 @@ namespace Notepad
             vm = new NotepadViewModel(this);
             canvas = (InkCanvas)Notepad_inkcanvas;
             canvas.Strokes.StrokesChanged += Strokes_StrokesChanged;
+            PopulateColorPanel();
             DataContext = vm;
+        }
+
+        private void PopulateColorPanel()
+        {
+            Type c = typeof(System.Windows.Media.Color);
+            PropertyInfo[] props = c.GetProperties(BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public);
+
         }
 
         private void Strokes_StrokesChanged(object sender, System.Windows.Ink.StrokeCollectionChangedEventArgs e)

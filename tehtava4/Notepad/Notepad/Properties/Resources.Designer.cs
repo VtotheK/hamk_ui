@@ -79,6 +79,15 @@ namespace Notepad.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calculator.
+        /// </summary>
+        public static string Calculator {
+            get {
+                return ResourceManager.GetString("Calculator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         public static string Cancel {

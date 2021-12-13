@@ -1,10 +1,12 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using Notepad.View;
 namespace Notepad.ViewModel
 {
     class NotepadViewModel
     {
         private RelayCommand _formatMenuShow;
+        private RelayCommand _calculatorShow;
 
         private FileMenuViewModel _fileMenu;
         private FormatViewModel _formatMenu = new FormatViewModel();
@@ -14,6 +16,7 @@ namespace Notepad.ViewModel
             _mainWindow = mw;
             _fileMenu = new FileMenuViewModel(this);
             FormatMenuShow = new RelayCommand(cFormatMenuShow);
+            ShowCalculator = new RelayCommand(cShowCalculator);
         }
         public NotepadViewModel()
         {
@@ -22,6 +25,7 @@ namespace Notepad.ViewModel
         public FormatViewModel FormatMenu { get => _formatMenu; set => _formatMenu = value; }
         private MainWindow MainWindow { get => _mainWindow; }
         public RelayCommand FormatMenuShow { get => _formatMenuShow; set => _formatMenuShow = value; }
+        public RelayCommand ShowCalculator{ get => _calculatorShow ; set => _calculatorShow = value; }
 
         public string NotepadTextFieldContentGet()
         {
@@ -32,6 +36,11 @@ namespace Notepad.ViewModel
         {
             FormatWindow fw = new FormatWindow(FormatMenu);
             fw.Show();
+        }
+
+        public void cShowCalculator()
+        {
+            Console.WriteLine("Hello from calculator");
         }
     }
 }
