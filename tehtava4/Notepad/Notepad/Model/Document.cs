@@ -10,7 +10,6 @@ namespace Notepad.Model
         private string _content = "";
         private string _fileName = null;
         private StrokeCollection _imageNotes = new StrokeCollection();
-
         public Document() { }
         public string FilePath
         {

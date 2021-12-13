@@ -16,7 +16,6 @@ namespace Notepad
     /// </summary>
     public partial class MainWindow : Window
     {
-        double scrollY = 0;
         InkCanvas canvas; 
         NotepadViewModel vm;
         public MainWindow()
@@ -60,11 +59,7 @@ namespace Notepad
         {
             TextBox textBox = (TextBox)Notepad_textbox;
             ScrollViewer scrollBar = (ScrollViewer)sender;
-            double textBoxHeight = textBox.ActualHeight;
-            Notepad_inkcanvas.Height = textBoxHeight;
-            Matrix moveMatrix = new Matrix(1, 0, 0, 1, 0, scrollY - scrollBar.VerticalOffset);
-            canvas.Strokes.Transform(moveMatrix, false);
-            scrollY = scrollBar.VerticalOffset;
+            canvas.Margin = new Thickness(0, -scrollBar.VerticalOffset,0,0);
         }
     }
 }

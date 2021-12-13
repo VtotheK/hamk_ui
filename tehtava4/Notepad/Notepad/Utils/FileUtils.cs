@@ -6,6 +6,7 @@ using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Notepad.Headers;
 using Notepad.Model;
 
@@ -46,7 +47,7 @@ namespace Notepad.Utils
                 FileHeader header = ExtractHeader(ms);
                 if(header.Header != FileHeader.HeaderMagic)
                 {
-                    Console.WriteLine("Invalid file");
+                    MessageBox.Show("Invalid file!", "Error", MessageBoxButton.OK);
                     return null;
                 }
                 PopulateDocument(doc, header, ms);

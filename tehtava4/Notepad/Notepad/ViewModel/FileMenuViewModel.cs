@@ -59,7 +59,7 @@ namespace Notepad.ViewModel
         private NotepadViewModel NotepadViewModel { get => _notepadViewModel; }
 
         public void cSaveFile()
-        {
+        {  
             if (Doc.FilePath != null && !string.IsNullOrWhiteSpace(Doc.FilePath))
             {
                 Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
@@ -78,8 +78,9 @@ namespace Notepad.ViewModel
             diag.DefaultExt = ".tst";
             if (diag.ShowDialog() == true)
             {
-                string path = diag.FileName;
                 Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
+                Doc.FilePath = diag.FileName;
+                Doc.FileName= Path.GetFileName(diag.FileName);
                 FileUtils.WriteDocumentToFile(Doc);
             }
         }
@@ -99,11 +100,12 @@ namespace Notepad.ViewModel
                     }
                 }
                 Document d = FileUtils.ReadDocumentFromFile(diag.FileName);
+                if (d == null)
+                    return;
                 Doc.FilePath = d.FilePath;
                 Doc.Content = d.Content;
                 Doc.ImageNotes = d.ImageNotes;
-                Doc.FileName = diag.FileName;
-                //PopulateTextBox(Doc);
+                Doc.FileName = Path.GetFileName(d.FilePath);
             }
         }
 
