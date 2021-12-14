@@ -24,11 +24,11 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.4*"></RowDefinition> 
-            <RowDefinition Height="10*"></RowDefinition> 
+            <RowDefinition Height="0.4*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
         </Grid.RowDefinitions>
-            <InkCanvas Height="10000"  Width="245" Strokes="{Binding FileMenu.Doc.ImageNotes, Mode=TwoWay}" x:Name="Notepad_inkcanvas"  Grid.Row="1" Grid.Column="1">
-            </InkCanvas>
+        <InkCanvas Height="10000"  Width="245" Strokes="{Binding FileMenu.Doc.ImageNotes, Mode=TwoWay}" x:Name="Notepad_inkcanvas"  Grid.Row="1" Grid.Column="1">
+        </InkCanvas>
         <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="{x:Static p:Resources.File}">
@@ -60,7 +60,7 @@
             </Menu>
         </DockPanel>
         <ScrollViewer Grid.Row="1" Grid.Column="0" ScrollChanged="ScrollViewer_ScrollChanged">
-                <TextBox Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox"/>
+            <TextBox Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox"/>
         </ScrollViewer>
         <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="1" Grid.Column="1">
         </Border>
@@ -71,9 +71,23 @@
                 <ComboBox  x:Name="InkCanvasColors" Margin="10 0 10 0" SelectionChanged="Colors_SelectionChanged"></ComboBox>
             </Border>
             <Label Margin="10 0 10 0">Font size</Label>
-            <Slider Margin="10 0 10 0" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Minimum="2" Maximum="50"></Slider>
+            <Slider Margin="10 0 10 0" AutoToolTipPlacement="TopLeft"  AutoToolTipPrecision="0" Minimum="2" Maximum="50" ValueChanged="Slider_ValueChanged"></Slider>
             <Label Margin="10 0 10 0">Tip</Label>
-            <ComboBox x:Name="Tips" Margin="10 0 10 0"></ComboBox>
+            <ComboBox x:Name="Tips" Margin="10 0 10 0" SelectionChanged="Tips_SelectionChanged">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse x:Name="Tips_EllipseIcon" Height="20" Width="20"/>
+                    <TextBlock x:Name="EllipseTip" Margin="5 0 0 0">
+                            Ellipse
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle x:Name="Tips_RectangleIcon" Height="20" Width="20"/>
+                    <TextBlock x:Name="RectangleTip" Margin="5 0 0 0">
+                           Rectangle
+                    </TextBlock>
+                </StackPanel>
+            </ComboBox>
+        <CheckBox Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" IsChecked="False" Click="CheckBox_Click">Highlighter</CheckBox>
         </StackPanel>
     </Grid>
 </Window>

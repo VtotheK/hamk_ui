@@ -9,6 +9,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 using System.Reflection;
+using System.Windows.Ink;
 
 namespace Notepad
 {
@@ -38,7 +39,12 @@ namespace Notepad
             PropertyInfo[] props = c.GetProperties(BindingFlags.Static | BindingFlags.DeclaredOnly | BindingFlags.Public);
             foreach (PropertyInfo info in props)
             {
-                InkCanvasColors.Items.Add(CreateColorStackPanel(info.Name));
+                StackPanel sp = CreateColorStackPanel(info.Name);
+                InkCanvasColors.Items.Add(sp);
+                if (info.Name == "Black")
+                {
+                    InkCanvasColors.SelectedItem = sp;
+                }
             }
         }
 
@@ -57,6 +63,7 @@ namespace Notepad
             TextBlock textBlock = new TextBlock();
             textBlock.Text = name;
             textBlock.Name = name;
+            textBlock.Margin = new Thickness(5, 0, 0, 0);
             sp.Children.Add(rect);
             sp.Children.Add(textBlock);
             return sp;
@@ -103,7 +110,41 @@ namespace Notepad
             if(colors.TryGetValue(child.Name,out selectedColor))
             {
                 canvas.DefaultDrawingAttributes.Color = selectedColor;
+                Tips_RectangleIcon.Fill = new SolidColorBrush(selectedColor);
+                Tips_EllipseIcon.Fill = new SolidColorBrush(selectedColor);
             }
+        }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if(canvas != null) { 
+                double val = (sender as Slider).Value;
+                canvas.DefaultDrawingAttributes.Width = val;
+                canvas.DefaultDrawingAttributes.Height = val;
+                }
+            }
+
+        private void Tips_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var sp = (StackPanel)Tips.SelectedValue;
+            var tip = (TextBlock)sp.Children[1];
+            switch (tip.Name)
+            {
+                case "EllipseTip":
+                    canvas.DefaultDrawingAttributes.StylusTip = StylusTip.Ellipse;
+                    break;
+                case "RectangleTip":
+                    canvas.DefaultDrawingAttributes.StylusTip = StylusTip.Rectangle;
+                    break;
+                default:
+                    canvas.DefaultDrawingAttributes.StylusTip = StylusTip.Rectangle;
+                    break;
+            }
+        }
+
+        private void CheckBox_Click(object sender, RoutedEventArgs e)
+        {
+            canvas.DefaultDrawingAttributes.IsHighlighter = canvas.DefaultDrawingAttributes.IsHighlighter == false ? true : false;
         }
     }
 }
