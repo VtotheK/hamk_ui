@@ -74,8 +74,8 @@ namespace Notepad.ViewModel
         public void cSaveFileAs()
         {
             var diag = new SaveFileDialog();
-            diag.Filter = "Notepad-- files (.tst)|*.tst|All files (*.*)|*.*";
-            diag.DefaultExt = ".tst";
+            diag.Filter = "Notepaint files (.npt)|*.npt|All files (*.*)|*.*";
+            diag.DefaultExt = ".npt";
             if (diag.ShowDialog() == true)
             {
                 Doc.Content = NotepadViewModel.NotepadTextFieldContentGet();
@@ -87,8 +87,8 @@ namespace Notepad.ViewModel
         public void cOpenFile()
         {
             OpenFileDialog diag = new OpenFileDialog();
-            diag.DefaultExt = ".tst";
-            diag.Filter = "Test files (.tst)|*.tst|All files (*.*)|*.*";
+            diag.DefaultExt = ".npt";
+            diag.Filter = "Notepaint files (.npt)|*.npt|All files (*.*)|*.*";
             if (diag.ShowDialog() == true)
             {
                 if (IsDocumentEdited())
@@ -135,7 +135,6 @@ namespace Notepad.ViewModel
                 {
                     Environment.Exit(0);
                 }
-
             }
             else
             {

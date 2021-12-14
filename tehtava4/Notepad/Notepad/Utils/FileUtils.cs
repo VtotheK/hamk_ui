@@ -24,7 +24,6 @@ namespace Notepad.Utils
                 ms.Position = 0;
                 Encoding encoding = Encoding.UTF8;
                 byte[] textArray = encoding.GetBytes(doc.Content);
-                //SigBase64 = Convert.ToBase64String(byteImage); // Get Base64
                 FileHeader header = new FileHeader(byteImage.Length, textArray.Length , FileHeader.HeaderMagic);
                 using (FileStream fs = File.Open(doc.FilePath, FileMode.Create))
                 {
