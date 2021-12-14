@@ -40,7 +40,9 @@ namespace Notepad.ViewModel
 
         public void cShowCalculator()
         {
-            Console.WriteLine("Hello from calculator");
+            Calculator calculator = new Calculator();
+            
+            calculator.Show();
         }
     }
 }

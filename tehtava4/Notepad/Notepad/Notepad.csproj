@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Drawing.Common.5.0.0\lib\net461\System.Drawing.Common.dll</HintPath>
@@ -57,9 +58,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="View\Calculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\FormatWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Laskin.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="View\Notepad.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -99,8 +108,14 @@
     <Compile Include="ViewModel\FileMenuViewModel.cs" />
     <Compile Include="ViewModel\FormatViewModel.cs" />
     <Compile Include="ViewModel\NotepadViewModel.cs" />
+    <Compile Include="View\Calculator.xaml.cs">
+      <DependentUpon>Calculator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\FormatWindow.xaml.cs">
       <DependentUpon>FormatWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Laskin.xaml.cs">
+      <DependentUpon>Laskin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Notepad.xaml.cs">
       <DependentUpon>Notepad.xaml</DependentUpon>
