@@ -68,7 +68,7 @@
             <Label Margin="0 0 0 30" FontSize="20" HorizontalAlignment="Center">Controls</Label>
             <Label Margin="10 0 10 0">Color</Label>
             <Border BorderThickness="1" BorderBrush="Gray">
-                <ComboBox x:Name="Colors" Margin="10 0 10 0"></ComboBox>
+                <ComboBox  x:Name="InkCanvasColors" Margin="10 0 10 0" SelectionChanged="Colors_SelectionChanged"></ComboBox>
             </Border>
             <Label Margin="10 0 10 0">Font size</Label>
             <Slider Margin="10 0 10 0" AutoToolTipPlacement="TopLeft" AutoToolTipPrecision="0" Minimum="2" Maximum="50"></Slider>
