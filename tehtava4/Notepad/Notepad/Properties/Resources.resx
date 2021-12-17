@@ -186,10 +186,16 @@
   <data name="Red" xml:space="preserve">
     <value>Red</value>
   </data>
+  <data name="Redo" xml:space="preserve">
+    <value>Redo</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Save</value>
   </data>
   <data name="Swedish" xml:space="preserve">
     <value>Swedish</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Undo</value>
   </data>
 </root>

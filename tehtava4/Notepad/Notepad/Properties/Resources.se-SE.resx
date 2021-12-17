@@ -186,10 +186,16 @@
   <data name="Red" xml:space="preserve">
     <value>Röd</value>
   </data>
+  <data name="Redo" xml:space="preserve">
+    <value>Göra om</value>
+  </data>
   <data name="Save" xml:space="preserve">
     <value>Spara</value>
   </data>
   <data name="Swedish" xml:space="preserve">
     <value>Svenska</value>
+  </data>
+  <data name="Undo" xml:space="preserve">
+    <value>Ångra</value>
   </data>
 </root>

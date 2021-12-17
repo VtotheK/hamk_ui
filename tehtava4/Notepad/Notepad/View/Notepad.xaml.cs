@@ -21,6 +21,7 @@ namespace Notepad
         InkCanvas canvas; 
         NotepadViewModel vm;
         Dictionary<string, System.Windows.Media.Color> colors = new Dictionary<string, System.Windows.Media.Color>();
+        List<Stroke> redoableStrokes = new List<Stroke>();
         public MainWindow()
         {
             string lang = Properties.Settings.Default.AppLang;
@@ -145,6 +146,24 @@ namespace Notepad
         private void CheckBox_Click(object sender, RoutedEventArgs e)
         {
             canvas.DefaultDrawingAttributes.IsHighlighter = canvas.DefaultDrawingAttributes.IsHighlighter == false ? true : false;
+        }
+
+        private void CanvasRedoButton_Click(object sender, RoutedEventArgs e)
+        {
+            if(redoableStrokes.Count > 0)
+            {
+                canvas.Strokes.Add(redoableStrokes[0]);
+                redoableStrokes.RemoveAt(0);
+            }
+        }
+
+        private void CanvasUndoButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (canvas.Strokes.Count > 0)
+            {
+                redoableStrokes.Add(canvas.Strokes[canvas.Strokes.Count - 1]);
+                canvas.Strokes.RemoveAt(canvas.Strokes.Count - 1);
+            }
         }
     }
 }

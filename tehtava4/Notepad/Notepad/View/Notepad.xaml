@@ -46,6 +46,8 @@
                     </MenuItem>
                     <MenuItem Header="{x:Static p:Resources.EditPaste}"  Command="ApplicationCommands.Paste">
                     </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.Undo}" Command="ApplicationCommands.Undo"></MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.Redo}" Command="ApplicationCommands.Redo"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="{x:Static p:Resources.Format}">
                     <MenuItem Command="{Binding FormatMenuShow}" Header="{x:Static p:Resources.FormatFont}"></MenuItem>
@@ -88,6 +90,8 @@
                 </StackPanel>
             </ComboBox>
         <CheckBox Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" IsChecked="False" Click="CheckBox_Click">Highlighter</CheckBox>
+        <Button x:Name="CanvasUndoButton" Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" Click="CanvasUndoButton_Click">Undo</Button>
+        <Button x:Name="CanvasRedoButton" Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" Click="CanvasRedoButton_Click">Redo</Button>
         </StackPanel>
     </Grid>
 </Window>
