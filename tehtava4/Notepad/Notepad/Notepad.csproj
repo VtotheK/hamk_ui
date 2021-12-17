@@ -66,10 +66,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Laskin.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="View\Notepad.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,9 +109,6 @@
     </Compile>
     <Compile Include="View\FormatWindow.xaml.cs">
       <DependentUpon>FormatWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Laskin.xaml.cs">
-      <DependentUpon>Laskin.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Notepad.xaml.cs">
       <DependentUpon>Notepad.xaml</DependentUpon>

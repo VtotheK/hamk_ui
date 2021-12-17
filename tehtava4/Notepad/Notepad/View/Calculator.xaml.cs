@@ -19,13 +19,15 @@ namespace Notepad.View
     /// </summary>
     public partial class Calculator : Window
     {
-        private string formula;
+        private TextBox mainWindowTextBox;
         private TextBox formulaField;
+        private string formula;
         private bool calculated = false;
         public string result = String.Empty;
-        public Calculator()
+        public Calculator(TextBox textBox)
         {
             InitializeComponent();
+            mainWindowTextBox = textBox;
             formulaField = FormulaField;
         }
 
@@ -95,6 +97,18 @@ namespace Notepad.View
             {
                 throw new ArgumentException();
             }
+        }
+
+        private void AppendToText_Click(object sender, RoutedEventArgs e)
+        {
+            mainWindowTextBox.AppendText(result);
+        }
+
+        private void AddToCursor_Click(object sender, RoutedEventArgs e)
+        {
+            int currentpos = mainWindowTextBox.CaretIndex;
+            mainWindowTextBox.Text = mainWindowTextBox.Text.Insert(mainWindowTextBox.CaretIndex, result);
+            mainWindowTextBox.CaretIndex = currentpos + result.Length;
         }
     }
 }

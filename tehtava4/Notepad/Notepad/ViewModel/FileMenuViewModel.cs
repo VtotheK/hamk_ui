@@ -87,8 +87,8 @@ namespace Notepad.ViewModel
         public void cOpenFile()
         {
             OpenFileDialog diag = new OpenFileDialog();
-            diag.DefaultExt = ".npt";
             diag.Filter = "Notepaint files (.npt)|*.npt|All files (*.*)|*.*";
+            diag.DefaultExt = ".npt";
             if (diag.ShowDialog() == true)
             {
                 if (IsDocumentEdited())

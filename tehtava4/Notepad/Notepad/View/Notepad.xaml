@@ -70,7 +70,7 @@
             <Border BorderThickness="1" BorderBrush="Gray">
                 <ComboBox  x:Name="InkCanvasColors" Margin="10 0 10 0" SelectionChanged="Colors_SelectionChanged"></ComboBox>
             </Border>
-            <Label Margin="10 0 10 0">Font size</Label>
+            <Label Margin="10 0 10 0">Tip size</Label>
             <Slider Margin="10 0 10 0" AutoToolTipPlacement="TopLeft"  AutoToolTipPrecision="0" Minimum="2" Maximum="50" ValueChanged="Slider_ValueChanged"></Slider>
             <Label Margin="10 0 10 0">Tip</Label>
             <ComboBox x:Name="Tips" Margin="10 0 10 0" SelectionChanged="Tips_SelectionChanged">
