@@ -1,0 +1,47 @@
+﻿<Window x:Class="Notepad.View.FormatWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:p="clr-namespace:Notepad.Properties"
+        xmlns:local="clr-namespace:Notepad.View"
+        mc:Ignorable="d"
+        Title="FormatWindow" Height="300" Width="300"
+        Window.Closed="CloseWindow">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"></ColumnDefinition> 
+            <ColumnDefinition Width="4*"></ColumnDefinition> 
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" FontSize="20" HorizontalAlignment="Center" Content="{x:Static p:Resources.FontSize}"></Label>
+        <ListBox Grid.Row="1" SelectionChanged="FontSizeNonMVVM" x:Name="FontSizeListBox" Grid.Column="0" VerticalAlignment="Top">
+            <ListBoxItem Content="8"  FontSize="8"></ListBoxItem> 
+            <ListBoxItem Content="10" FontSize="10"></ListBoxItem> 
+            <ListBoxItem Content="12" FontSize="12"></ListBoxItem> 
+            <ListBoxItem Content="14" FontSize="14"></ListBoxItem> 
+            <ListBoxItem Content="16" FontSize="16"></ListBoxItem> 
+            <ListBoxItem Content="18" FontSize="18"></ListBoxItem> 
+            <ListBoxItem Content="20" FontSize="20"></ListBoxItem> 
+            <ListBoxItem Content="22" FontSize="22"></ListBoxItem> 
+            <ListBoxItem Content="24" FontSize="24"></ListBoxItem> 
+            <ListBoxItem Content="26" FontSize="26"></ListBoxItem> 
+            <ListBoxItem Content="28" FontSize="28"></ListBoxItem> 
+            <ListBoxItem Content="32" FontSize="32"></ListBoxItem> 
+            <ListBoxItem Content="48" FontSize="48"></ListBoxItem> 
+            <ListBoxItem Content="72" FontSize="72"></ListBoxItem> 
+        </ListBox>
+        <Label Grid.Row="0" Grid.Column="1" FontSize="20" HorizontalAlignment="Center" Content="{x:Static p:Resources.FontColor}"></Label>
+        <StackPanel Grid.Row="1" x:Name="RadioPanel" Grid.Column="1">
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" Content="{x:Static p:Resources.Black}" FontSize="14"></RadioButton> 
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" Content="{x:Static p:Resources.Red}" FontSize="14" Foreground="Red"></RadioButton> 
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" Content="{x:Static p:Resources.Green}" FontSize="14" Foreground="Green"></RadioButton>
+            <RadioButton Margin="10" Checked="FontColorNonMVVM" Content="{x:Static p:Resources.Blue}" FontSize="14" Foreground="Blue"></RadioButton> 
+        </StackPanel>
+        <Button Command="{Binding RevertChanges}" Content="{x:Static p:Resources.Cancel}" Click="CloseWindowFromButton" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="1"></Button>
+        <Button x:Name="ApplyChanges" Content="{x:Static p:Resources.Save}" Command="{Binding ApplyChanges}" Click="CloseWindowFromButton" HorizontalAlignment="Right" Width="80" Margin="10 5 10 5" Grid.Row="2" Grid.Column="0"></Button> </Grid>
+</Window>

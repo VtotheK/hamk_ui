@@ -1,0 +1,97 @@
+﻿<Window x:Class="Notepad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Notepad"
+        xmlns:p="clr-namespace:Notepad.Properties;assembly=Notepad"
+        mc:Ignorable="d"
+        Title="{Binding FileMenu.Doc.FileName, StringFormat= '\{0\} - NotePaint'}" 
+        Height="650" Width="1000">
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Control" Key="N" Command="{Binding FileMenu.NewFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="S" Command="{Binding FileMenu.SaveFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="O" Command="{Binding FileMenu.OpenFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control+Shift" Key="S" Command="{Binding FileMenu.SaveFileAs}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="Q" Command="{Binding FileMenu.CloseNotepad}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="P" Command="{Binding FileMenu.PrintFile}"></KeyBinding>
+        <KeyBinding Modifiers="Control" Key="F" Command="{Binding FormatMenuShow}"></KeyBinding>
+    </Window.InputBindings>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="12*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"></RowDefinition>
+            <RowDefinition Height="10*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <InkCanvas Height="10000"  Width="245" Strokes="{Binding FileMenu.Doc.ImageNotes, Mode=TwoWay}" x:Name="Notepad_inkcanvas"  Grid.Row="1" Grid.Column="1">
+        </InkCanvas>
+        <DockPanel Grid.Row="0" Grid.ColumnSpan="3">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="{x:Static p:Resources.File}">
+                    <MenuItem InputGestureText="Ctrl+N" Header="{x:Static p:Resources.FileNew}" Command="{Binding FileMenu.NewFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+O" Header="{x:Static p:Resources.FileOpen}" Command="{Binding FileMenu.OpenFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+S" Header="{x:Static p:Resources.FileSave}" Command="{Binding FileMenu.SaveFile}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+Shift+S" Header="{x:Static p:Resources.FileSaveAs}" Command="{Binding FileMenu.SaveFileAs}"></MenuItem>
+                    <MenuItem InputGestureText="Ctrl+P" Header="{x:Static p:Resources.FilePrint}" Command="{Binding FileMenu.PrintFile}"></MenuItem>
+                    <Separator/>
+                    <MenuItem InputGestureText="Ctrl+Q" Header="{x:Static p:Resources.FileClose}"  Command="{Binding FileMenu.CloseNotepad}"></MenuItem>
+
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.Edit}">
+                    <MenuItem Header="{x:Static p:Resources.EditCopy}" Command="ApplicationCommands.Copy">
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.EditPaste}"  Command="ApplicationCommands.Paste">
+                    </MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.Undo}" Command="ApplicationCommands.Undo"></MenuItem>
+                    <MenuItem Header="{x:Static p:Resources.Redo}" Command="ApplicationCommands.Redo"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.Format}">
+                    <MenuItem Command="{Binding FormatMenuShow}" Header="{x:Static p:Resources.FormatFont}"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.Language}">
+                    <MenuItem Click="ChangeLanguageEn" Header="{x:Static p:Resources.English}"></MenuItem>
+                    <MenuItem Click="ChangeLanguageSwe" Header="{x:Static p:Resources.Swedish}"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="{x:Static p:Resources.Calculator}">
+                    <MenuItem Command="{Binding ShowCalculator}" Header="{x:Static p:Resources.Calculator}"></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <ScrollViewer Grid.Row="1" Grid.Column="0" ScrollChanged="ScrollViewer_ScrollChanged">
+            <TextBox Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Foreground="{Binding FormatMenu.DocForm.FontColor}" FontSize="{Binding FormatMenu.DocForm.FontSize}" AcceptsReturn="True" Text="{Binding FileMenu.Doc.Content}" x:Name="Notepad_textbox"/>
+        </ScrollViewer>
+        <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="1" Grid.Column="1">
+        </Border>
+        <StackPanel Grid.Row="1" Grid.Column="2">
+            <Label Margin="0 0 0 30" FontSize="20" HorizontalAlignment="Center">Controls</Label>
+            <Label Margin="10 0 10 0">Color</Label>
+            <Border BorderThickness="1" BorderBrush="Gray">
+                <ComboBox  x:Name="InkCanvasColors" Margin="10 0 10 0" SelectionChanged="Colors_SelectionChanged"></ComboBox>
+            </Border>
+            <Label Margin="10 0 10 0">Tip size</Label>
+            <Slider Margin="10 0 10 0" AutoToolTipPlacement="TopLeft"  AutoToolTipPrecision="0" Minimum="2" Maximum="50" ValueChanged="Slider_ValueChanged"></Slider>
+            <Label Margin="10 0 10 0">Tip</Label>
+            <ComboBox x:Name="Tips" Margin="10 0 10 0" SelectionChanged="Tips_SelectionChanged">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse x:Name="Tips_EllipseIcon" Height="20" Width="20"/>
+                    <TextBlock x:Name="EllipseTip" Margin="5 0 0 0">
+                            Ellipse
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle x:Name="Tips_RectangleIcon" Height="20" Width="20"/>
+                    <TextBlock x:Name="RectangleTip" Margin="5 0 0 0">
+                           Rectangle
+                    </TextBlock>
+                </StackPanel>
+            </ComboBox>
+        <CheckBox Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" IsChecked="False" Click="CheckBox_Click">Highlighter</CheckBox>
+        <Button x:Name="CanvasUndoButton" Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" Click="CanvasUndoButton_Click">Undo</Button>
+        <Button x:Name="CanvasRedoButton" Margin="10 10 10 0" Grid.Row="1" Grid.Column="2" Click="CanvasRedoButton_Click">Redo</Button>
+        </StackPanel>
+    </Grid>
+</Window>
